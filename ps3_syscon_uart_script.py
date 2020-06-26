@@ -1,3 +1,8 @@
+from __future__ import print_function
+from builtins import input
+from builtins import hex
+from builtins import range
+from builtins import object
 from binascii import unhexlify as uhx
 from Crypto.Cipher import AES
 import os
@@ -9,7 +14,7 @@ import logging
 log_format = "%(asctime)s::%(levelname)s::%(name)s::"\
              "%(filename)s::%(lineno)d::%(message)s"
 		 
-logging.basicConfig(filename='ps3_cxr_syscon.log', filemode='w', format=log_format level=logging.DEBUG)
+logging.basicConfig(filename='ps3_cxr_syscon.log', filemode='w', format=log_format, level=logging.DEBUG)
 
 class PS3UART(object):
     ser = serial.Serial()
@@ -64,7 +69,7 @@ class PS3UART(object):
             else:
                 j = 10
                 self.send('C:{:02X}:{}'.format(checksum, com[0:j]))
-                for i in xrange(length - j, 15, -15):
+                for i in range(length - j, 15, -15):
                     self.send(com[j:j+15])
                     j += 15
                 self.send(com[j:] + '\r\n')
@@ -144,11 +149,11 @@ class PS3UART(object):
 
 def main(argc, argv):
     if(argc < 3):
-        print os.path.basename(__file__) + ' <serial port> <sc type ["CXR", "CXRF"]>'
+        print(os.path.basename(__file__) + ' <serial port> <sc type ["CXR", "CXRF"]>')
         sys.exit(1)
     ps3 = PS3UART(argv[1], argv[2])
     while True:
-        input = raw_input('>$ ')
+        input = input('>$ ')
         if(input.lower() == 'auth'):
             print(ps3.auth())
             continue
@@ -156,7 +161,7 @@ def main(argc, argv):
             break
         ret = ps3.command(input)
         if(argv[2] == 'CXR'):
-            if(isinstance(ret[0], (int, long))):
+            if(isinstance(ret[0], int)):
                 print('{:08X} '.format(ret[0]) + ' '.join(ret[1]))
             else:
                 print(ret[0])
