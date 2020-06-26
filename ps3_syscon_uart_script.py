@@ -142,13 +142,13 @@ def main(argc, argv):
         sys.exit(1)
     ps3 = PS3UART(argv[1], argv[2])
     while True:
-        input = raw_input('>$ ')
-        if(input.lower() == 'auth'):
+        userin = input('>$ ')
+        if(userin.lower() == 'auth'):
             print(ps3.auth())
             continue
-        if(input.lower() == 'exit'):
+        if(userin.lower() == 'exit'):
             break
-        ret = ps3.command(input)
+        ret = ps3.command(userin)
         if(argv[2] == 'CXR'):
             if(isinstance(ret[0], (int, long))):
                 print('{:08X} '.format(ret[0]) + ' '.join(ret[1]))
