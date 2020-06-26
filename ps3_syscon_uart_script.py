@@ -4,12 +4,6 @@ import os
 import serial
 import sys
 import time
-import logging
-
-log_format = "%(asctime)s::%(levelname)s::%(name)s::"\
-             "%(filename)s::%(lineno)d::%(message)s"
-
-logging.basicConfig(filename='ps3_cxr_syscon.log', filemode='w', format=log_format, level=logging.DEBUG)
 
 class PS3UART(object):
     ser = serial.Serial()
@@ -162,10 +156,6 @@ def main(argc, argv):
                 print(ret[0])
         else:
             print(ret[1][0].decode('ascii'))
-
-        logging.info('input: {}')
-        
-        logging.info('ret: {}')
 
 
 if __name__ == '__main__':
