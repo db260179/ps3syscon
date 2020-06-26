@@ -1,8 +1,3 @@
-from __future__ import print_function
-from builtins import input
-from builtins import hex
-from builtins import range
-from builtins import object
 from binascii import unhexlify as uhx
 from Crypto.Cipher import AES
 import os
@@ -13,7 +8,7 @@ import logging
 
 log_format = "%(asctime)s::%(levelname)s::%(name)s::"\
              "%(filename)s::%(lineno)d::%(message)s"
-		 
+ 
 logging.basicConfig(filename='ps3_cxr_syscon.log', filemode='w', format=log_format, level=logging.DEBUG)
 
 class PS3UART(object):
@@ -59,7 +54,7 @@ class PS3UART(object):
 
     def command(self, com, wait = 1, verbose = False):
         if(verbose):
-            print('Command: ' + com)
+            print(('Command: ' + com))
 
         if(self.type == 'CXR'):
             length = len(com)
@@ -79,7 +74,7 @@ class PS3UART(object):
         time.sleep(wait)
         answer = self.receive().decode('ascii').strip()
         if(verbose):
-            print('Answer: ' + answer)
+            print(('Answer: ' + answer))
 
         if(self.type == 'CXR'):
             answer = answer.split(':')
@@ -155,18 +150,18 @@ def main(argc, argv):
     while True:
         input = input('>$ ')
         if(input.lower() == 'auth'):
-            print(ps3.auth())
+            print((ps3.auth()))
             continue
         if(input.lower() == 'exit'):
             break
         ret = ps3.command(input)
         if(argv[2] == 'CXR'):
             if(isinstance(ret[0], int)):
-                print('{:08X} '.format(ret[0]) + ' '.join(ret[1]))
+                print(('{:08X} '.format(ret[0]) + ' '.join(ret[1])))
             else:
-                print(ret[0])
+                print((ret[0]))
         else:
-            print(ret[1][0].decode('ascii'))
+            print((ret[1][0].decode('ascii')))
 
         logging.info('input: {}')
         
