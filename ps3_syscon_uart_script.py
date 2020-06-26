@@ -4,6 +4,16 @@ import os
 import serial
 import sys
 import time
+from sys import version_info
+if version_info.major == 3:
+    pass
+elif version_info.major == 2:
+    try:
+        input = raw_input
+    except NameError:
+        pass
+else:
+    print ("Unknown python version - input function not safe")
 
 class PS3UART(object):
     ser = serial.Serial()
@@ -17,11 +27,11 @@ class PS3UART(object):
     auth1r_header = uhx('10100000FFFFFFFF0000000000000000')
     auth2_header  = uhx('10010000000000000000000000000000')
 
-    def aes_decrypt_cbc(self, key, iv, input):
-        return AES.new(key, AES.MODE_CBC, iv).decrypt(input)
+    def aes_decrypt_cbc(self, key, iv, userin):
+        return AES.new(key, AES.MODE_CBC, iv).decrypt(userin)
 
-    def aes_encrypt_cbc(self, key, iv, input):
-        return AES.new(key, AES.MODE_CBC, iv).encrypt(input)
+    def aes_encrypt_cbc(self, key, iv, userin):
+        return AES.new(key, AES.MODE_CBC, iv).encrypt(userin)
 
     def __init__(self, port, type):
         self.ser.port = port
