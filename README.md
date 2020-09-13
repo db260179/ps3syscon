@@ -17,8 +17,7 @@ A0093003 CELL_POW_FAIL
 
 BE ERRORS:
 
-A0213013 BE_SPI DI/DO ERROR - CELL not communicating to syscon via SPI (1.2V MC2_VDDIO and 1.2V BE_VCS no output) = Dead CELL
-
+A0213013 BE_SPI DI/DO ERROR - CELL not communicating to syscon via SPI (1.2V MC2_VDDIO and 1.2V BE_VCS no output) = Possible shorts on the line, check C4001 and trailing caps. Possible CELL dead?
 
 A0213011 BE_SPI CS ERROR
 
@@ -44,7 +43,7 @@ A0302203 SB_SPI DI/DO ERROR
 
 A0313032 SB_CLOCK OR INIT ERROR
 
-A0902203 SB GLOD issues, system update to repair Blue ray or wifi related issues
+A0902203 SB GLOD issues, system update to repair nand/nor hashes
 
 
 OTHERS:
