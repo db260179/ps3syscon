@@ -1,0 +1,193 @@
+Default SEM-001 fantables
+
+Changing with set will not change checksum, but changing the setini will so needs fixing with eepcsum
+On bottom side of board, R4083 R4084 if they are missing or wrong value (not 3.3k) then the thrm data line will break readings, causing a 2M ohm reading on the SDA data line, jamming the i2c readings for both RSX and CELL.
+
+> tshutdown get 0
+tshutdown get 0
+TZone No:00
+1st BE Primary  Temperature:91.0(0x5b00)
+[mullion]$
+> tshutdown get 1
+tshutdown get 1
+TZone No:01
+RSX Primary  Temperature:95.0(0x5f00)
+
+Tweaked shutdown
+CELL
+tshutdown set 0 91.0
+
+RSX
+tshutdown set 1 91.0
+
+
+Default
+CELL 0
+fantbl set 0 p0 0.0 76.0 0x33
+fantbl set 0 p1 56.0 77.0 0x4a
+fantbl set 0 p2 56.50 82.0 0x4d
+fantbl set 0 p3 57.0 83.0 0x50
+fantbl set 0 p4 57.50 84.0 0x52
+fantbl set 0 p5 58.0 85.0 0x57
+fantbl set 0 p6 58.50 86.0 0x5c
+fantbl set 0 p7 59.0 87.0 0x8d
+fantbl set 0 p8 79.50 88.0 0xa6
+fantbl set 0 p9 80.0 91.0 0xff
+
+fantbl setini 0 p0 0.0 76.0 0x33
+fantbl setini 0 p1 56.0 77.0 0x4a
+fantbl setini 0 p2 56.50 82.0 0x4d
+fantbl setini 0 p3 57.0 83.0 0x50
+fantbl setini 0 p4 57.50 84.0 0x52
+fantbl setini 0 p5 58.0 85.0 0x57
+fantbl setini 0 p6 58.50 86.0 0x5c
+fantbl setini 0 p7 59.0 87.0 0x8d
+fantbl setini 0 p8 79.50 88.0 0xa6
+fantbl setini 0 p9 80.0 91.0 0xff
+
+RSX 1
+fantbl set 1 p0 0.0 76.0 0x33
+fantbl set 1 p1 56.0 77.0 0x4a
+fantbl set 1 p2 56.50 82.0 0x4d
+fantbl set 1 p3 57.0 83.0 0x50
+fantbl set 1 p4 57.50 84.0 0x52
+fantbl set 1 p5 58.0 85.0 0x57
+fantbl set 1 p6 58.50 86.0 0x5c
+fantbl set 1 p7 59.0 87.0 0x8d
+fantbl set 1 p8 79.50 88.0 0xa6
+fantbl set 1 p9 80.0 91.0 0xff
+
+fantbl setini 1 p0 0.0 76.0 0x33
+fantbl setini 1 p1 56.0 77.0 0x4a
+fantbl setini 1 p2 56.50 82.0 0x4d
+fantbl setini 1 p3 57.0 83.0 0x50
+fantbl setini 1 p4 57.50 84.0 0x52
+fantbl setini 1 p5 58.0 85.0 0x57
+fantbl setini 1 p6 58.50 86.0 0x5c
+fantbl setini 1 p7 59.0 87.0 0x8d
+fantbl setini 1 p8 79.50 88.0 0xa6
+fantbl setini 1 p9 80.0 91.0 0xff
+
+0 CELL
+
+
+fantbl get 0
+fancon No:00
+P0: TempD:0.0(0x0000) - TempU:76.0(0x4c00) duty:20%(0x33)
+P1: TempD:56.0(0x3800) - TempU:77.0(0x4d00) duty:29%(0x4a)
+P2: TempD:56.50(0x3880) - TempU:82.0(0x5200) duty:30%(0x4d)
+P3: TempD:57.0(0x3900) - TempU:83.0(0x5300) duty:31%(0x50)
+P4: TempD:57.50(0x3980) - TempU:84.0(0x5400) duty:32%(0x52)
+P5: TempD:58.0(0x3a00) - TempU:85.0(0x5500) duty:34%(0x57)
+P6: TempD:58.50(0x3a80) - TempU:86.0(0x5600) duty:36%(0x5c)
+P7: TempD:59.0(0x3b00) - TempU:87.0(0x5700) duty:55%(0x8d)
+P8: TempD:79.50(0x4f80) - TempU:88.0(0x5800) duty:65%(0xa6)
+P9: TempD:80.0(0x5000) - TempU:91.0(0x5b00) duty:100%(0xff)
+P10: TempD:255.75(0xffff) - TempU:255.75(0xffff) duty:100%(0xff)
+P11: TempD:255.75(0xffff) - TempU:255.75(0xffff) duty:100%(0xff)
+P12: TempD:255.75(0xffff) - TempU:255.75(0xffff) duty:100%(0xff)
+P13: TempD:255.75(0xffff) - TempU:255.75(0xffff) duty:100%(0xff)
+P14: TempD:255.75(0xffff) - TempU:255.75(0xffff) duty:100%(0xff)
+P15: TempD:255.75(0xffff) - TempU:255.75(0xffff) duty:100%(0xff)
+P16: TempD:255.75(0xffff) - TempU:255.75(0xffff) duty:100%(0xff)
+P17: TempD:255.75(0xffff) - TempU:255.75(0xffff) duty:100%(0xff)
+P18: TempD:255.75(0xffff) - TempU:255.75(0xffff) duty:100%(0xff)
+P19: TempD:255.75(0xffff) - TempU:255.75(0xffff) duty:100%(0xff)
+
+1 RSX
+
+fantbl get 1
+fancon No:01
+P0: TempD:0.0(0x0000) - TempU:84.0(0x5400) duty:20%(0x33)
+P1: TempD:56.0(0x3800) - TempU:85.0(0x5500) duty:29%(0x4a)
+P2: TempD:56.50(0x3880) - TempU:86.0(0x5600) duty:30%(0x4d)
+P3: TempD:57.0(0x3900) - TempU:87.0(0x5700) duty:31%(0x50)
+P4: TempD:57.50(0x3980) - TempU:88.0(0x5800) duty:32%(0x52)
+P5: TempD:58.0(0x3a00) - TempU:89.0(0x5900) duty:34%(0x57)
+P6: TempD:58.50(0x3a80) - TempU:90.0(0x5a00) duty:36%(0x5c)
+P7: TempD:59.0(0x3b00) - TempU:91.0(0x5b00) duty:55%(0x8d)
+P8: TempD:77.0(0x4d00) - TempU:92.0(0x5c00) duty:65%(0xa6)
+P9: TempD:78.0(0x4e00) - TempU:95.0(0x5f00) duty:100%(0xff)
+P10: TempD:255.75(0xffff) - TempU:255.75(0xffff) duty:100%(0xff)
+P11: TempD:255.75(0xffff) - TempU:255.75(0xffff) duty:100%(0xff)
+P12: TempD:255.75(0xffff) - TempU:255.75(0xffff) duty:100%(0xff)
+P13: TempD:255.75(0xffff) - TempU:255.75(0xffff) duty:100%(0xff)
+P14: TempD:255.75(0xffff) - TempU:255.75(0xffff) duty:100%(0xff)
+P15: TempD:255.75(0xffff) - TempU:255.75(0xffff) duty:100%(0xff)
+P16: TempD:255.75(0xffff) - TempU:255.75(0xffff) duty:100%(0xff)
+P17: TempD:255.75(0xffff) - TempU:255.75(0xffff) duty:100%(0xff)
+P18: TempD:255.75(0xffff) - TempU:255.75(0xffff) duty:100%(0xff)
+P19: TempD:255.75(0xffff) - TempU:255.75(0xffff) duty:100%(0xff)
+
+Tweak settings:
+
+0x33 = 20%
+0x40 = 25%
+0x49 = 28%
+0x4a = 29%
+0x4d = 30%
+0x50 = 31%
+0x52 = 32%
+0x56 = 33%
+0x57 = 34%
+0x5c = 36%
+0x60 = 37%
+0x63 = 38%
+0x73 = 40%
+0x80 = 50%
+0x8d = 55%
+0xa6 = 65%
+0xff = 100%
+
+Tweaked shutdown
+CELL
+tshutdown set 0 91.0
+
+RSX
+tshutdown set 1 91.0
+
+CELL 0 hex set
+fantbl set 0 p0 0.0 70.0 0x4d
+fantbl set 0 p1 69.0 72.0 0x52
+fantbl set 0 p2 71.50 74.50 0x57
+fantbl set 0 p3 72.0 75.50 0x5c
+fantbl set 0 p4 74.50 77.0 0x63
+fantbl set 0 p5 75.0 80.0 0x73
+fantbl set 0 p6 76.50 82.0 0x80
+fantbl set 0 p7 77.0 85.0 0x8d
+fantbl set 0 p8 79.50 88.0 0xa6
+fantbl set 0 p9 80.0 90.0 0xff
+
+fantbl setini 0 p0 0.0 70.0 0x4d
+fantbl setini 0 p1 69.0 72.0 0x52
+fantbl setini 0 p2 71.50 74.50 0x57
+fantbl setini 0 p3 73.0 75.50 0x5c
+fantbl setini 0 p4 74.50 77.0 0x63
+fantbl setini 0 p5 75.0 80.0 0x73
+fantbl setini 0 p6 76.50 82.0 0x80
+fantbl setini 0 p7 77.0 85.0 0x8d
+fantbl setini 0 p8 79.50 88.0 0xa6
+fantbl setini 0 p9 80.0 90.0 0xff
+
+RSX 1 hex set
+fantbl set 1 p0 0.0 70.0 0x4d
+fantbl set 1 p1 69.0 72.0 0x52
+fantbl set 1 p2 71.50 74.50 0x57
+fantbl set 1 p3 73.0 75.50 0x5c
+fantbl set 1 p4 74.50 77.0 0x63
+fantbl set 1 p5 75.0 80.0 0x73
+fantbl set 1 p6 76.50 82.0 0x80
+fantbl set 1 p7 77.0 85.0 0x8d
+fantbl set 1 p8 79.50 88.0 0xa6
+fantbl set 1 p9 80.0 90.0 0xff
+
+fantbl setini 1 p0 0.0 70.0 0x4d
+fantbl setini 1 p1 69.0 72.0 0x52
+fantbl setini 1 p2 71.50 74.50 0x57
+fantbl setini 1 p3 73.0 75.50 0x5c
+fantbl setini 1 p4 74.50 77.0 0x63
+fantbl setini 1 p5 75.0 80.0 0x73
+fantbl setini 1 p6 76.50 82.0 0x80
+fantbl setini 1 p7 77.0 85.0 0x8d
+fantbl setini 1 p8 79.50 88.0 0xa6
+fantbl setini 1 p9 80.0 90.0 0xff

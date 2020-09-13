@@ -1,0 +1,168 @@
+Default DIA-001 fantables
+
+tshutdown get 0
+TZone No:00
+1st BE Primary  Temperature:91.0(0x5b00)
+
+tshutdown get 1
+TZone No:01
+RSX Primary  Temperature:97.0(0x6100)
+
+
+0 CELL
+
+fantbl get 0
+fancon No:00
+P0: TempD:0.0(0x0000) - TempU:76.0(0x4c00) duty:20%(0x33)
+P1: TempD:52.0(0x3400) - TempU:77.0(0x4d00) duty:25%(0x40)
+P2: TempD:52.50(0x3480) - TempU:78.0(0x4e00) duty:26%(0x43)
+P3: TempD:53.0(0x3500) - TempU:79.0(0x4f00) duty:28%(0x48)
+P4: TempD:53.50(0x3580) - TempU:80.0(0x5000) duty:29%(0x4a)
+P5: TempD:54.0(0x3600) - TempU:81.0(0x5100) duty:31%(0x50)
+P6: TempD:54.50(0x3680) - TempU:82.0(0x5200) duty:32%(0x52)
+P7: TempD:55.0(0x3700) - TempU:83.0(0x5300) duty:33%(0x55)
+P8: TempD:55.50(0x3780) - TempU:84.0(0x5400) duty:34%(0x57)
+P9: TempD:56.0(0x3800) - TempU:85.0(0x5500) duty:35%(0x5a)
+P10: TempD:56.50(0x3880) - TempU:86.0(0x5600) duty:36%(0x5c)
+P11: TempD:57.0(0x3900) - TempU:87.0(0x5700) duty:60%(0x99)
+P12: TempD:81.0(0x5100) - TempU:88.0(0x5800) duty:70%(0xb3)
+P13: TempD:82.0(0x5200) - TempU:91.0(0x5b00) duty:100%(0xff)
+P14: TempD:255.75(0xffff) - TempU:255.75(0xffff) duty:100%(0xff)
+P15: TempD:255.75(0xffff) - TempU:255.75(0xffff) duty:100%(0xff)
+P16: TempD:255.75(0xffff) - TempU:255.75(0xffff) duty:100%(0xff)
+P17: TempD:255.75(0xffff) - TempU:255.75(0xffff) duty:100%(0xff)
+P18: TempD:255.75(0xffff) - TempU:255.75(0xffff) duty:100%(0xff)
+P19: TempD:255.75(0xffff) - TempU:255.75(0xffff) duty:100%(0xff)
+
+1 RSX
+
+fantbl get 1
+fancon No:01
+P0: TempD:0.0(0x0000) - TempU:78.0(0x4e00) duty:20%(0x33)
+P1: TempD:59.50(0x3b80) - TempU:79.0(0x4f00) duty:25%(0x40)
+P2: TempD:62.50(0x3e80) - TempU:83.0(0x5300) duty:26%(0x43)
+P3: TempD:63.0(0x3f00) - TempU:84.0(0x5400) duty:28%(0x48)
+P4: TempD:63.50(0x3f80) - TempU:85.0(0x5500) duty:29%(0x4a)
+P5: TempD:64.0(0x4000) - TempU:87.0(0x5700) duty:31%(0x50)
+P6: TempD:64.50(0x4080) - TempU:88.0(0x5800) duty:32%(0x52)
+P7: TempD:65.0(0x4100) - TempU:89.0(0x5900) duty:33%(0x55)
+P8: TempD:65.50(0x4180) - TempU:90.0(0x5a00) duty:34%(0x57)
+P9: TempD:66.0(0x4200) - TempU:91.0(0x5b00) duty:35%(0x5a)
+P10: TempD:66.50(0x4280) - TempU:92.0(0x5c00) duty:36%(0x5c)
+P11: TempD:67.0(0x4300) - TempU:93.0(0x5d00) duty:60%(0x99)
+P12: TempD:85.50(0x5580) - TempU:94.0(0x5e00) duty:70%(0xb3)
+P13: TempD:86.0(0x5600) - TempU:97.0(0x6100) duty:100%(0xff)
+P14: TempD:255.75(0xffff) - TempU:255.75(0xffff) duty:100%(0xff)
+P15: TempD:255.75(0xffff) - TempU:255.75(0xffff) duty:100%(0xff)
+P16: TempD:255.75(0xffff) - TempU:255.75(0xffff) duty:100%(0xff)
+P17: TempD:255.75(0xffff) - TempU:255.75(0xffff) duty:100%(0xff)
+P18: TempD:255.75(0xffff) - TempU:255.75(0xffff) duty:100%(0xff)
+P19: TempD:255.75(0xffff) - TempU:255.75(0xffff) duty:100%(0xff)
+
+Tweaked settings:
+
+tshutdown set 1 91
+
+0x33 = 20%
+0x40 = 25%
+0x43 = 26%
+0x47 = 27%
+0x48 = 28%
+0x4a = 29%
+0x4d = 30%
+0x50 = 31%
+0x52 = 32%
+0x55 = 33%
+0x57 = 34%
+0x5a = 35%
+0x5c = 36%
+0x60 = 37%
+0x63 = 38%
+0x73 = 40%
+0x80 = 50%
+0x8d = 55%
+0xa6 = 65%
+0xff = 100%
+
+fantbl set 0 p10 0xffff 0xffff 0xff = 16
+fantbl set 0 p11 0xffff 0xffff 0xff = 17
+fantbl set 0 p12 0xffff 0xffff 0xff = 18
+fantbl set 0 p13 0xffff 0xffff 0xff = 19
+p10 to p13 is hardcoded
+
+CELL 0
+
+P0: TempD:0.0(0x0000) - TempU:76.0(0x4c00) duty:20%(0x33)
+P1: TempD:52.0(0x3400) - TempU:77.0(0x4d00) duty:25%(0x40)
+P2: TempD:52.50(0x3480) - TempU:78.0(0x4e00) duty:26%(0x43)
+P3: TempD:53.0(0x3500) - TempU:79.0(0x4f00) duty:28%(0x48)
+P4: TempD:53.50(0x3580) - TempU:80.0(0x5000) duty:29%(0x4a)
+P5: TempD:54.0(0x3600) - TempU:81.0(0x5100) duty:31%(0x50)
+P6: TempD:54.50(0x3680) - TempU:82.0(0x5200) duty:32%(0x52)
+P7: TempD:55.0(0x3700) - TempU:83.0(0x5300) duty:33%(0x55)
+P8: TempD:55.50(0x3780) - TempU:84.0(0x5400) duty:34%(0x57)
+P9: TempD:56.0(0x3800) - TempU:85.0(0x5500) duty:35%(0x5a)
+
+fantbl set 0 p0 0.0 70.0 0x43
+fantbl set 0 p1 52.0 73.0 0x47
+fantbl set 0 p2 52.50 73.50 0x48
+fantbl set 0 p3 53.0 75.50 0x4a
+fantbl set 0 p4 53.50 76.50 0x4d
+fantbl set 0 p5 54.0 77.0 0x50
+fantbl set 0 p6 54.50 78.0 0x52
+fantbl set 0 p7 55.0 80.0 0x55
+fantbl set 0 p8 55.50 80.50 0x57
+fantbl set 0 p9 56.0 82.0 0x5a
+
+    
+fantbl setini 0 p0 0.0 70.0 0x43
+fantbl setini 0 p1 52.0 73.0 0x47
+fantbl setini 0 p2 52.50 73.50 0x48
+fantbl setini 0 p3 53.0 75.50 0x4a
+fantbl setini 0 p4 53.50 76.50 0x4d
+fantbl setini 0 p5 54.0 77.0 0x50
+fantbl setini 0 p6 54.50 78.0 0x52
+fantbl setini 0 p7 55.0 80.0 0x55
+fantbl setini 0 p8 55.50 80.50 0x57
+fantbl setini 0 p9 56.0 82.0 0x5a
+    
+RSX 1
+
+P0: TempD:0.0(0x0000) - TempU:78.0(0x4e00) duty:20%(0x33)
+P1: TempD:59.50(0x3b80) - TempU:79.0(0x4f00) duty:25%(0x40)
+P2: TempD:62.50(0x3e80) - TempU:83.0(0x5300) duty:26%(0x43)
+P3: TempD:63.0(0x3f00) - TempU:84.0(0x5400) duty:28%(0x48)
+P4: TempD:63.50(0x3f80) - TempU:85.0(0x5500) duty:29%(0x4a)
+P5: TempD:64.0(0x4000) - TempU:87.0(0x5700) duty:31%(0x50)
+P6: TempD:64.50(0x4080) - TempU:88.0(0x5800) duty:32%(0x52)
+P7: TempD:65.0(0x4100) - TempU:89.0(0x5900) duty:33%(0x55)
+P8: TempD:65.50(0x4180) - TempU:90.0(0x5a00) duty:34%(0x57)
+P9: TempD:66.0(0x4200) - TempU:91.0(0x5b00) duty:35%(0x5a)
+
+fantbl set 1 p0 0.0 70.0 0x43
+fantbl set 1 p1 59.50 73.0 0x48
+fantbl set 1 p2 62.50 73.50 0x4a
+fantbl set 1 p3 63.0 75.50 0x4d
+fantbl set 1 p4 63.50 76.50 0x50
+fantbl set 1 p5 64.0 77.0 0x52
+fantbl set 1 p6 64.50 78.0 0x55
+fantbl set 1 p7 65.0 80.0 0x57
+fantbl set 1 p8 65.50 80.50 0x5a
+fantbl set 1 p9 66.0 82.0 0x5c
+
+    
+fantbl setini 1 p0 0.0 70.0 0x43
+fantbl setini 1 p1 59.50 73.0 0x48
+fantbl setini 1 p2 62.50 73.50 0x4a
+fantbl setini 1 p3 63.0 75.50 0x4d
+fantbl setini 1 p4 63.50 76.50 0x50
+fantbl setini 1 p5 64.0 77.0 0x52
+fantbl setini 1 p6 64.50 78.0 0x55
+fantbl setini 1 p7 65.0 80.0 0x57
+fantbl setini 1 p8 65.50 80.50 0x5a
+fantbl setini 1 p9 66.0 82.0 0x5c
+
+
+Addr:0x00003ffe should be 0x00ff
+
+just take the last 4 values - ee3a ignore trailing ffff

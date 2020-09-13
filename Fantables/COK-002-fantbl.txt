@@ -1,0 +1,130 @@
+Default COK-002 fantables
+
+eepcsum
+Addr:0x000032fe should be 0x528c
+Addr:0x000034fe should be 0x7115
+sum:0x0100
+Addr:0x000039fe should be 0x0038
+Addr:0x00003dfe should be 0x00ff
+Addr:0x00003ffe should be 0x00ff
+
+Default CELL
+tshutdown get 0
+TZone No:00
+1st BE Primary  Temperature:85.0(0x5500)
+
+Default RSX
+tshutdown get 1
+TZone No:01
+RSX Primary  Temperature:95.0(0x5f00)
+
+
+Tweaked shutdown
+CELL
+tshutdown set 0 91.0
+
+RSX
+tshutdown set 1 91.0
+
+0 CELL default
+
+
+fancon No:00
+P0: TempD:0.0(0x0000) - TempU:74.0(0x4a00) duty:20%(0x33)
+P1: TempD:60.0(0x3c00) - TempU:75.0(0x4b00) duty:25%(0x40)
+P2: TempD:61.0(0x3d00) - TempU:76.0(0x4c00) duty:28%(0x48)
+P3: TempD:67.0(0x4300) - TempU:77.0(0x4d00) duty:30%(0x4d)
+P4: TempD:68.0(0x4400) - TempU:78.0(0x4e00) duty:35%(0x5a)
+P5: TempD:71.0(0x4700) - TempU:79.0(0x4f00) duty:40%(0x66)
+P6: TempD:71.50(0x4780) - TempU:80.0(0x5000) duty:45%(0x73)
+P7: TempD:72.0(0x4800) - TempU:81.0(0x5100) duty:50%(0x80)
+P8: TempD:72.50(0x4880) - TempU:82.0(0x5200) duty:60%(0x99)
+P9: TempD:73.0(0x4900) - TempU:85.0(0x5500) duty:100%(0xff)
+
+1 RSX default
+
+fantbl get 1
+fancon No:01
+P0: TempD:0.0(0x0000) - TempU:83.0(0x5300) duty:20%(0x33)
+P1: TempD:48.0(0x3000) - TempU:84.0(0x5400) duty:25%(0x40)
+P2: TempD:71.0(0x4700) - TempU:85.0(0x5500) duty:28%(0x48)
+P3: TempD:77.0(0x4d00) - TempU:86.0(0x5600) duty:30%(0x4d)
+P4: TempD:78.0(0x4e00) - TempU:87.0(0x5700) duty:35%(0x5a)
+P5: TempD:80.0(0x5000) - TempU:88.0(0x5800) duty:40%(0x66)
+P6: TempD:80.50(0x5080) - TempU:89.0(0x5900) duty:45%(0x73)
+P7: TempD:81.0(0x5100) - TempU:90.0(0x5a00) duty:50%(0x80)
+P8: TempD:81.50(0x5180) - TempU:91.0(0x5b00) duty:60%(0x99)
+P9: TempD:82.0(0x5200) - TempU:95.0(0x5f00) duty:100%(0xff)
+
+Tweak settings:
+
+Be careful changing setini as changes checksum!
+
+0x33 = 20%
+0x40 = 25%
+0x49 = 28%
+0x4a = 29%
+0x4d = 30%
+0x50 = 31%
+0x52 = 32%
+0x57 = 34%
+0x5c = 36%
+0x60 = 37%
+0x73 = 40%
+0x80 = 50%
+0x8d = 55%
+0xa6 = 65%
+0xff = 100%
+
+Tweaked shutdown
+CELL
+tshutdown set 0 91.0
+
+RSX
+tshutdown set 1 91.0
+
+CELL 0 hex set
+fantbl set 0 p0 0.0 70.0 0x4d
+fantbl set 0 p1 69.0 72.0 0x52
+fantbl set 0 p2 71.50 74.50 0x57
+fantbl set 0 p3 72.0 75.50 0x5c
+fantbl set 0 p4 74.50 77.0 0x60
+fantbl set 0 p5 75.0 80.0 0x73
+fantbl set 0 p6 76.50 82.0 0x80
+fantbl set 0 p7 77.0 85.0 0x8d
+fantbl set 0 p8 79.50 88.0 0xa6
+fantbl set 0 p9 80.0 90.0 0xff
+
+fantbl setini 0 p0 0.0 70.0 0x4d
+fantbl setini 0 p1 69.0 72.0 0x52
+fantbl setini 0 p2 71.50 74.50 0x57
+fantbl setini 0 p3 73.0 75.50 0x5c
+fantbl setini 0 p4 74.50 77.0 0x60
+fantbl setini 0 p5 75.0 80.0 0x73
+fantbl setini 0 p6 76.50 82.0 0x80
+fantbl setini 0 p7 77.0 85.0 0x8d
+fantbl setini 0 p8 79.50 88.0 0xa6
+fantbl setini 0 p9 80.0 90.0 0xff
+
+RSX 1 hex set
+fantbl set 1 p0 0.0 70.0 0x4d
+fantbl set 1 p1 69.0 72.0 0x52
+fantbl set 1 p2 71.50 74.50 0x57
+fantbl set 1 p3 73.0 75.50 0x5c
+fantbl set 1 p4 74.50 77.0 0x60
+fantbl set 1 p5 75.0 80.0 0x73
+fantbl set 1 p6 76.50 82.0 0x80
+fantbl set 1 p7 77.0 85.0 0x8d
+fantbl set 1 p8 79.50 88.0 0xa6
+fantbl set 1 p9 80.0 90.0 0xff
+
+fantbl setini 1 p0 0.0 70.0 0x4d
+fantbl setini 1 p1 69.0 72.0 0x52
+fantbl setini 1 p2 71.50 74.50 0x57
+fantbl setini 1 p3 73.0 75.50 0x5c
+fantbl setini 1 p4 74.50 77.0 0x60
+fantbl setini 1 p5 75.0 80.0 0x73
+fantbl setini 1 p6 76.50 82.0 0x80
+fantbl setini 1 p7 77.0 85.0 0x8d
+fantbl setini 1 p8 79.50 88.0 0xa6
+fantbl setini 1 p9 80.0 90.0 0xff
