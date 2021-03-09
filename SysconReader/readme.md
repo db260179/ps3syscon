@@ -1,6 +1,8 @@
 # ABOUT
 This program is an edited version the uart_script.py by db260179. This program is a GUI based application to help newcomers easily diagnose your ps3 without needing any knowledge on how to use Python. With this, there is no need to install Python for this to work since it is a compiled application. 
-If you need help with installing and running the program. Please use either the youtube link below or SysconReader_Guide.pdf.
+If you need help with installing and running the program. Please use either the youtube link below.
+
+[PS3 SysconReader Program Guide](https://www.youtube.com/watch?v=b_rFE4Apssc)
 
 # FEATURES
 - Simple selection of COM port ranging from 0 - 256
