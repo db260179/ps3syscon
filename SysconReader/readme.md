@@ -9,7 +9,7 @@ If you need help with installing and running the program. Please use either the 
 - Feature to execute custom commands from GUI.
 
 # HOW TO INSTALL
-1. Download SysconReader_Installer: __link__
+1. Download SysconReader_Installer: <a href="https://drive.google.com/file/d/1INFEK7h2oCDDCavw-THuS3aIaYm5p9kG/view</a>
 2. Run setup and choose install directory
 Thats it. Now to follow instructions below.
 
