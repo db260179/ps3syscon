@@ -5,10 +5,10 @@ Required Python 2 or Python 3 - ps3_syscon_uart_script23.py
 
 Tested on Linux with python - Follow guide for requirements
 
-Windows users can use - https://www.psx-place.com/threads/fault-finding-ylod-with-the-syscon-first-steps-and-error-reporting.30100/page-33#post-284506
+Windows users - SysconReader/readme.md
 
 
-Recorded errors (errlog) in the syscon shell:
+## Recorded errors (errlog) in the syscon shell:
 
 POWER ERRORS:
 
