@@ -184,7 +184,7 @@ def main(argc, argv):
             else:
                 print('{:08X}'.format(ret[0]) + '\n' + ''.join(ret[1]))
         else:
-            print(ret[1][0].decode('ascii'))
+            print(ret[1][0])
                 
 if __name__ == '__main__':
     main(len(sys.argv), sys.argv)
