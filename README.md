@@ -1,7 +1,7 @@
 # ps3syscon
 PS3 syscon guide and fault finding
 
-Required Python 2 or Python 3 - ps3_syscon_uart_script23.py
+Required Python 2 or Python 3 - ps3_syscon_uart_script.py
 
 Tested on Linux with python - Follow guide for requirements
 
