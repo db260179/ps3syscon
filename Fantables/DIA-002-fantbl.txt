@@ -62,6 +62,7 @@ P19: TempD:255.75(0xffff) - TempU:255.75(0xffff) duty:100%(0xff)
 Tweaked settings:
 
 tshutdown set 1 91
+tshutdown setini 1 91
 
 0x33 = 20%
 0x40 = 25%
@@ -103,7 +104,7 @@ P7: TempD:55.0(0x3700) - TempU:83.0(0x5300) duty:33%(0x55)
 P8: TempD:55.50(0x3780) - TempU:84.0(0x5400) duty:34%(0x57)
 P9: TempD:56.0(0x3800) - TempU:85.0(0x5500) duty:35%(0x5a)
 
-fantbl set 0 p0 0.0 70.0 0x43
+fantbl set 0 p0 0.0 71.0 0x40
 fantbl set 0 p1 52.0 73.0 0x47
 fantbl set 0 p2 52.50 73.50 0x48
 fantbl set 0 p3 53.0 75.50 0x4a
@@ -114,8 +115,8 @@ fantbl set 0 p7 55.0 80.0 0x55
 fantbl set 0 p8 55.50 80.50 0x57
 fantbl set 0 p9 56.0 82.0 0x5a
 
-    
-fantbl setini 0 p0 0.0 70.0 0x43
+
+fantbl setini 0 p0 0.0 71.0 0x40
 fantbl setini 0 p1 52.0 73.0 0x47
 fantbl setini 0 p2 52.50 73.50 0x48
 fantbl setini 0 p3 53.0 75.50 0x4a
@@ -125,7 +126,7 @@ fantbl setini 0 p6 54.50 78.0 0x52
 fantbl setini 0 p7 55.0 80.0 0x55
 fantbl setini 0 p8 55.50 80.50 0x57
 fantbl setini 0 p9 56.0 82.0 0x5a
-    
+
 RSX 1
 
 P0: TempD:0.0(0x0000) - TempU:78.0(0x4e00) duty:20%(0x33)
@@ -139,28 +140,28 @@ P7: TempD:65.0(0x4100) - TempU:89.0(0x5900) duty:33%(0x55)
 P8: TempD:65.50(0x4180) - TempU:90.0(0x5a00) duty:34%(0x57)
 P9: TempD:66.0(0x4200) - TempU:91.0(0x5b00) duty:35%(0x5a)
 
-fantbl set 1 p0 0.0 70.0 0x43
-fantbl set 1 p1 59.50 73.0 0x48
-fantbl set 1 p2 62.50 73.50 0x4a
-fantbl set 1 p3 63.0 75.50 0x4d
-fantbl set 1 p4 63.50 76.50 0x50
-fantbl set 1 p5 64.0 77.0 0x52
-fantbl set 1 p6 64.50 78.0 0x55
-fantbl set 1 p7 65.0 80.0 0x57
-fantbl set 1 p8 65.50 80.50 0x5a
-fantbl set 1 p9 66.0 82.0 0x5c
+fantbl set 1 p0 0.0 71.0 0x40
+fantbl set 1 p1 59.50 73.0 0x47
+fantbl set 1 p2 62.50 73.50 0x48
+fantbl set 1 p3 63.0 75.50 0x4a
+fantbl set 1 p4 63.50 76.50 0x4d
+fantbl set 1 p5 64.0 77.0 0x50
+fantbl set 1 p6 64.50 78.0 0x52
+fantbl set 1 p7 65.0 80.0 0x55
+fantbl set 1 p8 65.50 80.50 0x57
+fantbl set 1 p9 66.0 82.0 0x5a
 
-    
-fantbl setini 1 p0 0.0 70.0 0x43
-fantbl setini 1 p1 59.50 73.0 0x48
-fantbl setini 1 p2 62.50 73.50 0x4a
-fantbl setini 1 p3 63.0 75.50 0x4d
-fantbl setini 1 p4 63.50 76.50 0x50
-fantbl setini 1 p5 64.0 77.0 0x52
-fantbl setini 1 p6 64.50 78.0 0x55
-fantbl setini 1 p7 65.0 80.0 0x57
-fantbl setini 1 p8 65.50 80.50 0x5a
-fantbl setini 1 p9 66.0 82.0 0x5c
+
+fantbl setini 1 p0 0.0 71.0 0x40
+fantbl setini 1 p1 59.50 73.0 0x47
+fantbl setini 1 p2 62.50 73.50 0x48
+fantbl setini 1 p3 63.0 75.50 0x4a
+fantbl setini 1 p4 63.50 76.50 0x4d
+fantbl setini 1 p5 64.0 77.0 0x50
+fantbl setini 1 p6 64.50 78.0 0x52
+fantbl setini 1 p7 65.0 80.0 0x55
+fantbl setini 1 p8 65.50 80.50 0x57
+fantbl setini 1 p9 66.0 82.0 0x5a
 
 
 Addr:0x00003ffe should be 0x00ff
