@@ -21,10 +21,12 @@ RSX Primary  Temperature:95.0(0x5f00)
 
 Tweaked shutdown
 CELL
-tshutdown set 0 91.0
+tshutdown set 0 90.0
+tshutdown setini 0 90.0
 
 RSX
-tshutdown set 1 91.0
+tshutdown set 1 90.0
+tshutdown setini 1 90.0
 
 0 CELL default
 
@@ -76,55 +78,48 @@ Be careful changing setini as changes checksum!
 0xa6 = 65%
 0xff = 100%
 
-Tweaked shutdown
-CELL
-tshutdown set 0 91.0
-
-RSX
-tshutdown set 1 91.0
-
 CELL 0 hex set
-fantbl set 0 p0 0.0 70.0 0x48
-fantbl set 0 p1 69.0 72.0 0x4d
-fantbl set 0 p2 71.50 74.50 0x52
-fantbl set 0 p3 72.0 75.50 0x57
-fantbl set 0 p4 74.50 77.0 0x60
-fantbl set 0 p5 75.0 80.0 0x73
-fantbl set 0 p6 76.50 82.0 0x80
-fantbl set 0 p7 77.0 85.0 0x8d
+fantbl set 0 p0 0.0 72.0 0x40
+fantbl set 0 p1 70.0 73.0 0x48
+fantbl set 0 p2 72.50 74.50 0x4d
+fantbl set 0 p3 73.0 75.50 0x52
+fantbl set 0 p4 75.50 77.0 0x5c
+fantbl set 0 p5 76.0 80.0 0x73
+fantbl set 0 p6 77.50 82.0 0x80
+fantbl set 0 p7 78.0 85.0 0x8d
 fantbl set 0 p8 79.50 88.0 0xa6
 fantbl set 0 p9 80.0 90.0 0xff
 
-fantbl setini 0 p0 0.0 70.0 0x48
-fantbl setini 0 p1 69.0 72.0 0x4d
-fantbl setini 0 p2 71.50 74.50 0x52
-fantbl setini 0 p3 73.0 75.50 0x57
-fantbl setini 0 p4 74.50 77.0 0x60
-fantbl setini 0 p5 75.0 80.0 0x73
-fantbl setini 0 p6 76.50 82.0 0x80
-fantbl setini 0 p7 77.0 85.0 0x8d
+fantbl setini 0 p0 0.0 72.0 0x40
+fantbl setini 0 p1 70.0 73.0 0x48
+fantbl setini 0 p2 72.50 74.50 0x4d
+fantbl setini 0 p3 73.0 75.50 0x52
+fantbl setini 0 p4 75.50 77.0 0x5c
+fantbl setini 0 p5 76.0 80.0 0x73
+fantbl setini 0 p6 77.50 82.0 0x80
+fantbl setini 0 p7 78.0 85.0 0x8d
 fantbl setini 0 p8 79.50 88.0 0xa6
 fantbl setini 0 p9 80.0 90.0 0xff
 
 RSX 1 hex set
-fantbl set 1 p0 0.0 70.0 0x48
-fantbl set 1 p1 69.0 72.0 0x4d
-fantbl set 1 p2 71.50 74.50 0x52
-fantbl set 1 p3 73.0 75.50 0x57
-fantbl set 1 p4 74.50 77.0 0x60
-fantbl set 1 p5 75.0 80.0 0x73
-fantbl set 1 p6 76.50 82.0 0x80
-fantbl set 1 p7 77.0 85.0 0x8d
+fantbl set 1 p0 0.0 72.0 0x40
+fantbl set 1 p1 70.0 73.0 0x48
+fantbl set 1 p2 72.50 74.50 0x4d
+fantbl set 1 p3 73.0 75.50 0x52
+fantbl set 1 p4 75.50 77.0 0x5c
+fantbl set 1 p5 76.0 80.0 0x73
+fantbl set 1 p6 77.50 82.0 0x80
+fantbl set 1 p7 78.0 85.0 0x8d
 fantbl set 1 p8 79.50 88.0 0xa6
 fantbl set 1 p9 80.0 90.0 0xff
 
-fantbl setini 1 p0 0.0 70.0 0x48
-fantbl setini 1 p1 69.0 72.0 0x4d
-fantbl setini 1 p2 71.50 74.50 0x52
-fantbl setini 1 p3 73.0 75.50 0x57
-fantbl setini 1 p4 74.50 77.0 0x60
-fantbl setini 1 p5 75.0 80.0 0x73
-fantbl setini 1 p6 76.50 82.0 0x80
-fantbl setini 1 p7 77.0 85.0 0x8d
+fantbl setini 1 p0 0.0 72.0 0x40
+fantbl setini 1 p1 70.0 73.0 0x48
+fantbl setini 1 p2 72.50 74.50 0x4d
+fantbl setini 1 p3 73.0 75.50 0x52
+fantbl setini 1 p4 75.50 77.0 0x5c
+fantbl setini 1 p5 76.0 80.0 0x73
+fantbl setini 1 p6 77.50 82.0 0x80
+fantbl setini 1 p7 78.0 85.0 0x8d
 fantbl setini 1 p8 79.50 88.0 0xa6
 fantbl setini 1 p9 80.0 90.0 0xff

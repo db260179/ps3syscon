@@ -15,10 +15,12 @@ RSX Primary  Temperature:95.0(0x5f00)
 
 Tweaked shutdown
 CELL
-tshutdown set 0 91.0
+tshutdown set 0 90.0
+tshutdown setini 0 90.0
 
 RSX
-tshutdown set 1 91.0
+tshutdown set 1 90.0
+tshutdown setini 1 90.0
 
 
 Default
@@ -139,12 +141,6 @@ Tweak settings:
 0xa6 = 65%
 0xff = 100%
 
-Tweaked shutdown
-CELL
-tshutdown set 0 91.0
-
-RSX
-tshutdown set 1 91.0
 
 CELL 0 hex set
 fantbl set 0 p0 0.0 70.0 0x40
