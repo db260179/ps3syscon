@@ -80,7 +80,7 @@ Be careful changing setini as changes checksum!
 
 CELL 0 hex set
 fantbl set 0 p0 0.0 72.0 0x40
-fantbl set 0 p1 70.0 73.0 0x48
+fantbl set 0 p1 68.0 73.0 0x48
 fantbl set 0 p2 72.50 74.50 0x4d
 fantbl set 0 p3 73.0 75.50 0x52
 fantbl set 0 p4 75.50 77.0 0x5c
@@ -91,7 +91,7 @@ fantbl set 0 p8 79.50 88.0 0xa6
 fantbl set 0 p9 80.0 90.0 0xff
 
 fantbl setini 0 p0 0.0 72.0 0x40
-fantbl setini 0 p1 70.0 73.0 0x48
+fantbl setini 0 p1 68.0 73.0 0x48
 fantbl setini 0 p2 72.50 74.50 0x4d
 fantbl setini 0 p3 73.0 75.50 0x52
 fantbl setini 0 p4 75.50 77.0 0x5c
@@ -103,7 +103,7 @@ fantbl setini 0 p9 80.0 90.0 0xff
 
 RSX 1 hex set
 fantbl set 1 p0 0.0 72.0 0x40
-fantbl set 1 p1 70.0 73.0 0x48
+fantbl set 1 p1 68.0 73.0 0x48
 fantbl set 1 p2 72.50 74.50 0x4d
 fantbl set 1 p3 73.0 75.50 0x52
 fantbl set 1 p4 75.50 77.0 0x5c
@@ -114,7 +114,7 @@ fantbl set 1 p8 79.50 88.0 0xa6
 fantbl set 1 p9 80.0 90.0 0xff
 
 fantbl setini 1 p0 0.0 72.0 0x40
-fantbl setini 1 p1 70.0 73.0 0x48
+fantbl setini 1 p1 68.0 73.0 0x48
 fantbl setini 1 p2 72.50 74.50 0x4d
 fantbl setini 1 p3 73.0 75.50 0x52
 fantbl setini 1 p4 75.50 77.0 0x5c
