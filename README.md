@@ -5,7 +5,12 @@ Required Python 2 or Python 3 - ps3_syscon_uart_script.py
 
 Tested on Linux with python - Follow guide for requirements
 
-Windows users - SysconReader/readme.md
+Windows users 
+  - SysconReader/readme.md
+  - syscon.ps1 (PowerShell script, works on Linux too)
+    - Tested on Windows PowerShell 5.1 and PowerShell Core 7.2
+    - Same syntax as the Python script
+    - **Sherwood syscons not guaranteed to be working**
 
 
 ## Recorded errors (errlog) in the syscon shell:
