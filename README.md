@@ -12,6 +12,8 @@ Windows users
     - Same syntax as the Python script
     - **Sherwood syscons not guaranteed to be working**
 
+## CXR Error codes meaning
+https://www.psdevwiki.com/ps3/Error_Codes#SYSCON_Error_Codes
 
 ## Recorded errors (errlog) in the syscon shell:
 
@@ -79,3 +81,5 @@ A0401002 = RSX VRAM Power Fail - running state possible tokins issues
 A0402120 = HDMI Error (IC2502)
 
 A0401301 = BE PLL Unlock
+
+## For more in depth error codes read - https://www.psdevwiki.com/ps3/Syscon_Error_Codes
