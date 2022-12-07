@@ -10,7 +10,7 @@ import time
 class PS3UART(object):
     ser = serial.Serial()
     type = ''
-            
+
     sc2tb = uhx('71f03f184c01c5ebc3f6a22a42ba9525')  # Syscon to TestBench Key    (0x130 xor 0x4578)
     tb2sc = uhx('907e730f4d4e0a0b7b75f030eb1d9d36')  # TestBench to Syscon Key    (0x130 xor 0x4588)
     value = uhx('3350BD7820345C29056A223BA220B323')  # 0x45B8
@@ -18,10 +18,10 @@ class PS3UART(object):
 
     auth1r_header = uhx('10100000FFFFFFFF0000000000000000')
     auth2_header  = uhx('10010000000000000000000000000000')
-    
+
     def aes_decrypt_cbc(self, key, iv, in_data):
         return AES.new(key, AES.MODE_CBC, iv).decrypt(in_data)
-    
+
     def aes_encrypt_cbc(self, key, iv, in_data):
         return AES.new(key, AES.MODE_CBC, iv).encrypt(in_data)
 
@@ -38,21 +38,21 @@ class PS3UART(object):
         self.ser.open()
         assert(self.ser.isOpen())
         self.ser.flush()
-        
+
     def __del__(self):
         self.ser.close()
-        
+
     def send(self, data):
-        self.ser.write(data.encode('ascii'))    
-                            
+        self.ser.write(data.encode('ascii'))
+
     def receive(self):
         return self.ser.read(self.ser.inWaiting())
-        
+
     def command(self, com, wait = 1, verbose = False):
         if(verbose):
             print('Command: ' + com)
-        
-        if(self.type == 'CXR'):        
+
+        if(self.type == 'CXR'):
             length = len(com)
             checksum = sum(bytearray(com, 'ascii')) % 0x100
             if(length <= 10):
@@ -64,21 +64,21 @@ class PS3UART(object):
                     self.send(com[j:j+15])
                     j += 15
                 self.send(com[j:] + '\r\n')
-        elif(self.type == 'SW'):    
+        elif(self.type == 'SW'):
             length = len(com)
             if(length >= 0x40):
                 if(self.command('SETCMDLONG FF FF')[0] != 0):
-                    return (0xFFFFFFFF, ['Setcmdlong'])        
+                    return (0xFFFFFFFF, ['Setcmdlong'])
             checksum = sum(bytearray(com, 'ascii')) % 0x100
             self.send('{}:{:02X}\r\n'.format(com, checksum))
         else:
             self.send(com + '\r\n')
-            
+
         time.sleep(wait)
         answer = self.receive().decode('ascii').strip()
         if(verbose):
             print('Answer: ' + answer)
-        
+
         if(self.type == 'CXR'):
             answer = answer.split(':')
             if(len(answer) != 3):
@@ -87,14 +87,14 @@ class PS3UART(object):
             if(answer[0] != 'R' and answer[0] != 'E'):
                 return (0xFFFFFFFF, ['Magic'])
             if(answer[1] != '{:02X}'.format(checksum)):
-                return (0xFFFFFFFF, ['Checksum'])    
+                return (0xFFFFFFFF, ['Checksum'])
             data = answer[2].split(' ')
             if(answer[0] == 'R' and len(data) < 2 or answer[0] == 'E' and len(data) != 2):
                 return (0xFFFFFFFF, ['Data length'])
             if(data[0] != 'OK' or len(data) < 2):
                 return (int(data[1], 16), [])
             else:
-                return (int(data[1], 16), data[2:])    
+                return (int(data[1], 16), data[2:])
         elif(self.type == 'SW'):
             answer = answer.split('\n')
             for i in range(0, len(answer)):
@@ -108,13 +108,13 @@ class PS3UART(object):
             ret = answer[-1][0].replace('\n', '').split(' ')
             if(len(ret) < 2 or len(ret[1]) != 8 and not all(c in string.hexdigits for c in ret[1])):
                 return (0, [x[0] for x in answer])
-            elif(len(answer) == 1):         
+            elif(len(answer) == 1):
                 return (int(ret[1], 16), ret[2:])
             else:
                 return (int(ret[1], 16), [x[0] for x in answer[:-1]])
         else:
             return (0, [answer])
-            
+
     def auth(self):
         if(self.type == 'CXR' or self.type == 'SW'):
             auth1r = self.command('AUTH1 10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000')
@@ -163,37 +163,37 @@ class PS3UART(object):
                 return 'scopen response invalid'
 
 if(len(sys.argv) < 3):
-    print os.path.basename(__file__) + ' <serial port> <output file>'
+    print(os.path.basename(__file__) + ' <serial port> <output file>')
     sys.exit(1)
- 
+
 ps3 = PS3UART(sys.argv[1], 'CXR')
-print "Version: " + ps3.command("VER")[1][0]
-print ps3.auth()
+print('Version: ' + ps3.command('VER')[1][0])
+print(ps3.auth())
 f = open(sys.argv[2], 'wb')
 block_size = 0x40
-print "Dumping NVS"
+print("Dumping NVS")
 failed = []
 for i in xrange(0x2C00, 0x7400, block_size): # 0x7400 for CXR713, 0x4400 for CXR714
-    print "Reading 0x{:04X}".format(i)
+    print("Reading 0x{:04X}".format(i))
     data = ps3.command("R8 {:08X} {:02X}".format(i, block_size))
     ret = data[0]
     if ret == 0:
         f.write((data[1][0]).decode('hex'))
     else:
-        print "Failed: " + str(ret)
+        print("Failed: " + str(ret))
         failed += [i]
         f.write(("A"*block_size*2).decode('hex'))
-     
+
 f.close()
 time.sleep(2)
-print "\nRetrying failed offsets"
+print("\nRetrying failed offsets")
 for i in failed:
-    print "Reading 0x{:04X}".format(i)
+    print("Reading 0x{:04X}".format(i))
     for j in xrange(0, block_size, block_size/4):
         while True:
             data = ps3.command("R8 {:08X} {:02X}".format(i+j, block_size/4))
             ret = data[0]
             if ret == 0:
-                print data[1][0]
+                print(data[1][0])
                 break
             time.sleep(2)

@@ -163,7 +163,7 @@ class PS3UART(object):
                 return 'scopen response invalid'
 
 if(len(sys.argv) < 3):
-    print os.path.basename(__file__) + ' <serial port> <patch file>'
+    print(os.path.basename(__file__) + ' <serial port> <patch file>')
     sys.exit(1)
  
 ps3 = PS3UART(sys.argv[1], 'CXR')
