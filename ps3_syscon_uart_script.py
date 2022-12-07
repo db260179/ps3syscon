@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 from binascii import unhexlify as uhx
 from Crypto.Cipher import AES # pycryptodome
 import os
