@@ -1,13 +1,22 @@
 # ps3syscon
 PS3 syscon guide and fault finding
 
-Required Python 2 or Python 3 - ps3_syscon_uart_script.py
+Required Python 2 or Python 3 - Linux/ps3_syscon_uart_script.py
 
 Tested on Linux with python - Follow guide for requirements
 
+Pre setup Debian VM - VirtualboxVM/PS3-SYSCON-1.0.ova.txt - Download links, md5sum
+
+## PS3-Syscon VM requirements
+
+* Virtualbox 6.x, 7.x - Windows or Linux - https://www.virtualbox.org/wiki/Downloads
+* Virtualbox Extension pack required for USB access to the serial lead
+
+Once virtualbox is installed, import the ova file as an appliance - login/ssh/http details are in the description of the import ova
+
 Windows users 
-  - SysconReader/readme.md
-  - syscon.ps1 (PowerShell script, works on Linux too)
+  - Windows/SysconReader/readme.md
+  - Windows/syscon.ps1 (PowerShell script)
     - Tested on Windows PowerShell 5.1 and PowerShell Core 7.2
     - Same syntax as the Python script
     - **Sherwood syscons not guaranteed to be working**
