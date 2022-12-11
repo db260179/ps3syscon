@@ -8,12 +8,12 @@ fi
 
 ps3_syscon_uart()
 {
-    port=$2
-    mode=$3
+    port="$2"
+    mode="$3"
 
     if [ "${port}" = "" ]; then
       echo "Please specify the serial port to use i.e. /dev/ttyUSB0"
-    
+
       serialPortList=$(ls /dev/ | grep ttyUSB*)
       for s in $serialPortList
       do echo "$s is connected!"
@@ -23,8 +23,7 @@ ps3_syscon_uart()
     fi
 
     if [ "${mode}" = "" ]; then
-      echo "Please specify the mode to use i.e. Mullion - CXR = External mode, CXRF = Internal mode"
-      echo "Sherwood = SW"
+      echo "Please specify the mode to use i.e. Mullion - CXR = External mode, CXRF = Internal mode Sherwood = SW"
       exit 1
     fi
 
@@ -34,8 +33,8 @@ ps3_syscon_uart()
 
 syscon_dump_cxr()
 {
-    port=$2
-    outputfile=$3
+    port="$2"
+    outputfile="$3"
 
     if [ "${port}" = "" ]; then
       echo "Please specify the serial port to use i.e. /dev/ttyUSB0"
@@ -58,8 +57,8 @@ syscon_dump_cxr()
 
 syscon_dump_cxrf()
 {
-    port=$2
-    outputfile=$3
+    port="$2"
+    outputfile="$3"
 
     if [ "${port}" = "" ]; then
       echo "Please specify the serial port to use i.e. /dev/ttyUSB0"
@@ -82,8 +81,8 @@ syscon_dump_cxrf()
 
 syscon_dump_sw()
 {
-    port=$2
-    outputfile=$3
+    port="$2"
+    outputfile="$3"
 
     if [ "${port}" = "" ]; then
       echo "Please specify the serial port to use i.e. /dev/ttyUSB0"
@@ -106,8 +105,8 @@ syscon_dump_sw()
 
 syscon_patch_cxr()
 {
-    port=$2
-    patchfile=$3
+    port="$2"
+    patchfile="$3"
 
     if [ "${port}" = "" ]; then
       echo "Please specify the serial port to use i.e. /dev/ttyUSB0"
@@ -116,7 +115,7 @@ syscon_patch_cxr()
       for s in $serialPortList
       do echo "$s is connected!"
       done
-      
+
       exit 1
     fi
 
@@ -132,19 +131,19 @@ syscon_patch_cxr()
 
 case "$1" in
   syscon)
-    ps3_syscon_uart
+    ps3_syscon_uart "$1" "$2" "$3"
     ;;
   dump-cxr)
-    syscon_dump_cxr
+    syscon_dump_cxr "$1" "$2" "$3"
     ;;
   dump-cxrf)
-    syscon_dump_cxrf
+    syscon_dump_cxrf "$1" "$2" "$3"
     ;;
   dump-sw)
-    syscon_dump_sw
+    syscon_dump_sw "$1" "$2" "$3"
     ;;
   patch-cxr)
-    syscon_patch_cxr
+    syscon_patch_cxr "$1" "$2" "$3"
     ;;
   *)
     echo ""
