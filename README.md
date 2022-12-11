@@ -3,28 +3,26 @@ PS3 syscon guide and fault finding
 
 Required Python 2 or Python 3 - Linux/ps3_syscon_uart_script.py
 
-Tested on Linux with python - Follow guide for requirements
-
-Pre setup Debian VM - VirtualboxVM/PS3-SYSCON-1.0.ova.txt - Download links, md5sum
-
-## PS3-Syscon VM requirements
-
-* Virtualbox 6.x, 7.x - Windows or Linux - https://www.virtualbox.org/wiki/Downloads
-* Virtualbox Extension pack required for USB access to the serial lead
-
-Once virtualbox is installed, import the ova file as an appliance - login/ssh/http details are in the description of the import ova
-
 Windows users 
-  - Windows/SysconReader/readme.md
+  - [Windows/SysconReader/readme.md](/Windows/SysconReader/readme.md)
   - Windows/syscon.ps1 (PowerShell script)
     - Tested on Windows PowerShell 5.1 and PowerShell Core 7.2
     - Same syntax as the Python script
     - **Sherwood syscons not guaranteed to be working**
 
-## CXR Error codes meaning
-https://www.psdevwiki.com/ps3/Error_Codes#SYSCON_Error_Codes
+Tested on Linux with python - Follow guide for requirements
 
-## Recorded errors (errlog) in the syscon shell:
+Pre setup Debian VM - [VirtualboxVM/PS3-SYSCON.ova.md](/VirtualboxVM/PS3-SYSCON.ova.md) - Download links, md5sum
+
+## PS3-Syscon VM requirements
+
+* Virtualbox 6.x, 7.x - Windows or Linux - [Virtualbox website download](https://www.virtualbox.org/wiki/Downloads)
+* Virtualbox Extension pack required for USB access to the serial lead
+
+Once virtualbox is installed, import the ova file as an appliance - login/ssh/http details are in the description of the import ova
+
+
+## Typical recorded errors (errlog) in the syscon shell:
 
 A = Fixed value
 
@@ -61,7 +59,7 @@ A0213013 = BE_SPI DI/DO ERROR - CELL not communicating to syscon via SPI (1.2V M
 
 A0213011 =  BE_SPI CS ERROR
 
-A0203010 =  BE_INIT OR BE_POWGOOD OR CLOCK ERRORS
+A0203010 = BE_INIT OR BE_POWGOOD OR CLOCK ERRORS
 
 A0801200 = CELL overheating - poor thermal paste or no heatsink attached, GLOD symptoms
 
@@ -91,4 +89,5 @@ A0402120 = HDMI Error (IC2502)
 
 A0401301 = BE PLL Unlock
 
-## For more in depth error codes read - https://www.psdevwiki.com/ps3/Syscon_Error_Codes
+## More in depth SYSCON Error codes meaning
+[PS3Dev Wiki Syscon Error Codes](https://www.psdevwiki.com/ps3/Error_Codes#SYSCON_Error_Codes)
