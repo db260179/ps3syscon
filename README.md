@@ -90,4 +90,4 @@ A0402120 = HDMI Error (IC2502)
 A0401301 = BE PLL Unlock
 
 ## More in depth SYSCON Error codes meaning
-[PS3Dev Wiki Syscon Error Codes](https://www.psdevwiki.com/ps3/Error_Codes#SYSCON_Error_Codes)
+[PS3Dev Wiki Syscon Error Codes](https://www.psdevwiki.com/ps3/Syscon_Error_Codes)

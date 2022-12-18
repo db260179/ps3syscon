@@ -1,4 +1,6 @@
 #!/bin/bash
+# Syscon helper script for the python scripts
+
 
 if [ "${DEBUG}" = "true" ]; then
   set -ex
@@ -127,11 +129,71 @@ syscon_patch_cxr()
     ./SysconPatchCXR.py ${port} ${patchfile}
 }
 
+sysconhelp()
+{
+cat <<'EOF'
+Example of using the syscon option when first attempt to enter INT mode from EXT mode:
+   
+Enter syscon EXT mode - $0 syscon /dev/ttyUSB0 CXR
+   
+In python shell authorise first - $ auth
+(If it fails validate that the connections are correct and your serial lead is working - you can use putty or screen to show the OK prompt)
+   
+If auth was successful will show:
+$ Auth successful
+   
+Set the mode to internal mode:
+$ EEP SET 3961 01 00 (Must be in caps on linux systems)
+Validate change:
+$ EEP GET 3961 01
+00000000 00
+   
+Turn off PS3 motherboard
+  
+Now ground the DIAG lead if applicable - not required for Sherwood boards
+  
+Exit out of the python shell - CTRL+C or type 'exit'
+  
+Turn on PS3 board
+   
+Enter syscon INT mode - $0 syscon /dev/ttyUSB0 CXRF
+In python shell authorise first - $ auth
+   
+Correct the checksum of the syscon:
+   
+$ eepcsum
+Addr:0x000032fe should be 0x528c
+Addr:0x000034fe should be 0x7115
+sum:0x0100
+Addr:0x000039fe should be 0x0038
+Addr:0x00003dfe should be 0x00ff
+Addr:0x00003ffe should be 0x00ff
+   
+Addr:0x000039fe is incorrect so fix it
+  
+$ w 39FE 38 00 (little endian have the byte swapped)
+   
+Validate its correct now:
+   
+$ eepcsum
+Addr:0x000032fe should be 0x528c
+Addr:0x000034fe should be 0x7115
+Addr:0x000039fe should be 0x0038
+Addr:0x00003dfe should be 0x00ff
+Addr:0x00003ffe should be 0x00ff
+  
+From now on you can be internal mode CXRF and do commands like - 'errlog and lasterrlog'
 
+EOF
+   
+}
 
 case "$1" in
   syscon)
     ps3_syscon_uart "$1" "$2" "$3"
+    ;;
+  sysconhelp)
+    sysconhelp
     ;;
   dump-cxr)
     syscon_dump_cxr "$1" "$2" "$3"
@@ -147,6 +209,7 @@ case "$1" in
     ;;
   *)
     echo ""
+    echo "Usage: $0 sysconhelp - Show examples of using the syscon i.e Setting INT mode on first time etc"
     echo "Usage: $0 syscon {port} {mode} - port = serial port i.e. /dev/ttyUSB0, mode = CXR (EXT mode) or CXRF (INT mode) or SW"
     echo "Usage: $0 dump-cxr {port} {outputfile} - port = serial port i.e. /dev/ttyUSB0, outputfile = sysconCXR.dump"
     echo "Usage: $0 dump-cxrf {port} {outputfile} - port = serial port i.e. /dev/ttyUSB0, outputfile = sysconCXRF.dump"
