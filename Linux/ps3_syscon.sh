@@ -129,6 +129,37 @@ syscon_patch_cxr()
     ./SysconPatchCXR.py ${port} ${patchfile}
 }
 
+ps3_syscon_uart-test()
+{
+    port="$2"
+    baudrate="$3"
+
+    if [ "${port}" = "" ]; then
+      echo "Please specify the serial port to use i.e. /dev/ttyUSB0"
+
+      serialPortList=$(ls /dev/ | grep ttyUSB*)
+      for s in $serialPortList
+      do echo "$s is connected!"
+      done
+
+      exit 1
+    fi
+
+    if [ "${baudrate}" = "" ]; then
+      echo "Please specify the serial baud rate mode to use i.e. Mullion - 57600 = CXR, 115200 = CXRF/SW"
+      exit 1
+    fi
+
+    echo "Entering Screen session - to exit hit the CTRL+A+D keys"
+    echo "Output of screen session is stored in - ~/ps3_syscon_uart-test.log"
+    echo "If screen output is garbage then try swapping the TX and RX leads when powering on the PS3"
+    echo "REMEMBER! CXRF needs the DIAG lead to be shorted to GND"
+    sleep 5
+    screen -L -Logfile ~/ps3_syscon_uart-test.log ${port} ${baudrate}
+    pgrep screen | xargs kill -9
+
+}
+
 sysconhelp()
 {
 cat <<'EOF'
@@ -195,6 +226,9 @@ case "$1" in
   sysconhelp)
     sysconhelp
     ;;
+  syscontest)
+    ps3_syscon_uart-test "$1" "$2" "$3"
+    ;;
   dump-cxr)
     syscon_dump_cxr "$1" "$2" "$3"
     ;;
@@ -210,6 +244,7 @@ case "$1" in
   *)
     echo ""
     echo "Usage: $0 sysconhelp - Show examples of using the syscon i.e Setting INT mode on first time etc"
+    echo "Usage: $0 syscontest - Test serial output port - port = i.e. /dev/ttyUSB0, baudrate = 57600 (CXR) or 115200 (CXRF/SW)"
     echo "Usage: $0 syscon {port} {mode} - port = serial port i.e. /dev/ttyUSB0, mode = CXR (EXT mode) or CXRF (INT mode) or SW"
     echo "Usage: $0 dump-cxr {port} {outputfile} - port = serial port i.e. /dev/ttyUSB0, outputfile = sysconCXR.dump"
     echo "Usage: $0 dump-cxrf {port} {outputfile} - port = serial port i.e. /dev/ttyUSB0, outputfile = sysconCXRF.dump"
