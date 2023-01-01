@@ -1,5 +1,7 @@
 # VirtualboxVM Guide
 
+[Download links for this VM](/VirtualboxVM/PS3-SYSCON.ova.md)
+
 ## VM requirements
 
 * Virtualbox 6.x, 7.x - Windows or Linux - [Virtualbox website download](https://www.virtualbox.org/wiki/Downloads)
