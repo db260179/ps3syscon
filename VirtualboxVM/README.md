@@ -21,7 +21,7 @@ In Virtualbox goto the settings page of the 'PS3-SYSCON' VM and click on the USB
 
 Add a filter to the serial lead you have connected to the host PC -> PS3 - The above image example is the serial lead i've filtered.
 
-This will then expose the serial lead to the vm so you can run the helper bash script found in - [Linux/ps3_syscon.sh](/ps3syscon/Linux/ps3_syscon.sh)
+This will then expose the serial lead to the vm so you can run the helper bash script found in - [Linux/ps3_syscon.sh](/Linux/ps3_syscon.sh)
 
 ## Helpful commands from the terminal(V1.1.1 VM image onwards)
 
