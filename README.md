@@ -12,15 +12,7 @@ Windows users
 
 Tested on Linux with python - Follow guide for requirements
 
-Pre setup Debian VM - [VirtualboxVM/PS3-SYSCON.ova.md](/VirtualboxVM/PS3-SYSCON.ova.md) - Download links, md5sum
-
-## PS3-Syscon VM requirements
-
-* Virtualbox 6.x, 7.x - Windows or Linux - [Virtualbox website download](https://www.virtualbox.org/wiki/Downloads)
-* Virtualbox Extension pack required for USB access to the serial lead
-
-Once virtualbox is installed, import the ova file as an appliance - login/ssh/http details are in the description of the import ova
-
+Pre setup Debian VM - [VirtualboxVM details](/VirtualboxVM/README.md) - Guide, Download links (md5sum)
 
 ## Typical recorded errors (errlog) in the syscon shell:
 
@@ -47,13 +39,13 @@ A082120 = HDMI Power on failure (IC2502) - Sil9132CBU chip failure or related po
 
 A0201B02 = RSX VRAM FAIL - Faulty vrams (core would read a 0.2 ohm reading)
 
-A0801001 = CELL Power on VRAM failure
+A0801001 = CELL Power on VRAM failure (Potential NEC tokins issue and VCC)
 
-A0801002 = RSX Power on VRAM failure
+A0801002 = RSX Power on VRAM failure (Potential NEC tokins issue and VCC)
 
-A0093004 = RSX_POW_FAIL poweroff state
+A0093004 = RSX_POW_FAIL poweroff state (Potential NEC tokins issue and VCC)
 
-A0093003 CELL_POW_FAIL poweroff state
+A0093003 = CELL_POW_FAIL poweroff state (Potential NEC tokins issue and VCC)
 
 A0213013 = BE_SPI DI/DO ERROR - CELL not communicating to syscon via SPI (1.2V MC2_VDDIO and 1.2V BE_VCS no output) = Possible shorts on the line, check C4001 and trailing caps. Possible CELL dead?
 
