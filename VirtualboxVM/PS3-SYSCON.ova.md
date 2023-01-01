@@ -4,7 +4,6 @@
 
 ## V1.1 - Fix ps3syscon.sh helper script, update motd
 [V1.1 Download](https://workupload.com/file/QpDxHzUJcL8)
-[Mirror1 - GoogleDrive](https://drive.google.com/drive/folders/1Mzm65I1xclxkBMOuO63X6sbZsZdcRVBU?usp=sharing)
 V1.1 - md5sum = ef13d2ca7f2b602dd67242a0b0e47eba PS3-SYSCON-1.1.ova
 
 ## V1.0 - First VM export
