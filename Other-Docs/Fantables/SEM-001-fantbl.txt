@@ -1,6 +1,7 @@
 Default SEM-001 fantables
 
-Changing with set will not change checksum, but changing the setini will so needs fixing with eepcsum
+Tech notes:
+
 On bottom side of board, R4083 R4084 if they are missing or wrong value (not 3.3k) then the thrm data line will break readings, causing a 2M ohm reading on the SDA data line, jamming the i2c readings for both RSX and CELL.
 
 > tshutdown get 0
@@ -16,16 +17,6 @@ RSX Primary  Temperature:95.0(0x5f00)
 
 Default
 CELL 0
-fantbl set 0 p0 0.0 76.0 0x33
-fantbl set 0 p1 56.0 77.0 0x4a
-fantbl set 0 p2 56.50 82.0 0x4d
-fantbl set 0 p3 57.0 83.0 0x50
-fantbl set 0 p4 57.50 84.0 0x52
-fantbl set 0 p5 58.0 85.0 0x57
-fantbl set 0 p6 58.50 86.0 0x5c
-fantbl set 0 p7 59.0 87.0 0x8d
-fantbl set 0 p8 79.50 88.0 0xa6
-fantbl set 0 p9 80.0 91.0 0xff
 
 fantbl setini 0 p0 0.0 76.0 0x33
 fantbl setini 0 p1 56.0 77.0 0x4a
@@ -39,16 +30,6 @@ fantbl setini 0 p8 79.50 88.0 0xa6
 fantbl setini 0 p9 80.0 91.0 0xff
 
 RSX 1
-fantbl set 1 p0 0.0 76.0 0x33
-fantbl set 1 p1 56.0 77.0 0x4a
-fantbl set 1 p2 56.50 82.0 0x4d
-fantbl set 1 p3 57.0 83.0 0x50
-fantbl set 1 p4 57.50 84.0 0x52
-fantbl set 1 p5 58.0 85.0 0x57
-fantbl set 1 p6 58.50 86.0 0x5c
-fantbl set 1 p7 59.0 87.0 0x8d
-fantbl set 1 p8 79.50 88.0 0xa6
-fantbl set 1 p9 80.0 91.0 0xff
 
 fantbl setini 1 p0 0.0 76.0 0x33
 fantbl setini 1 p1 56.0 77.0 0x4a
@@ -66,6 +47,7 @@ fantbl setini 1 p9 80.0 91.0 0xff
 
 fantbl get 0
 fancon No:00
+
 P0: TempD:0.0(0x0000) - TempU:76.0(0x4c00) duty:20%(0x33)
 P1: TempD:56.0(0x3800) - TempU:77.0(0x4d00) duty:29%(0x4a)
 P2: TempD:56.50(0x3880) - TempU:82.0(0x5200) duty:30%(0x4d)
@@ -143,16 +125,6 @@ tshutdown setini 1 91.0
 
 
 CELL 0 hex set
-fantbl set 0 p0 0.0 70.0 0x49
-fantbl set 0 p1 68.0 72.0 0x52
-fantbl set 0 p2 71.0 74.50 0x57
-fantbl set 0 p3 72.0 75.50 0x5c
-fantbl set 0 p4 74.50 77.0 0x63
-fantbl set 0 p5 75.0 80.0 0x73
-fantbl set 0 p6 76.50 82.0 0x80
-fantbl set 0 p7 77.0 85.0 0x8d
-fantbl set 0 p8 79.50 88.0 0xa6
-fantbl set 0 p9 80.0 90.0 0xff
 
 fantbl setini 0 p0 0.0 70.0 0x49
 fantbl setini 0 p1 68.0 72.0 0x52
@@ -166,16 +138,6 @@ fantbl setini 0 p8 79.50 88.0 0xa6
 fantbl setini 0 p9 80.0 90.0 0xff
 
 RSX 1 hex set
-fantbl set 1 p0 0.0 70.0 0x49
-fantbl set 1 p1 68.0 72.0 0x52
-fantbl set 1 p2 71.0 74.50 0x57
-fantbl set 1 p3 73.0 75.50 0x5c
-fantbl set 1 p4 74.50 77.0 0x63
-fantbl set 1 p5 75.0 80.0 0x73
-fantbl set 1 p6 76.50 82.0 0x80
-fantbl set 1 p7 77.0 85.0 0x8d
-fantbl set 1 p8 79.50 88.0 0xa6
-fantbl set 1 p9 80.0 90.0 0xff
 
 fantbl setini 1 p0 0.0 70.0 0x49
 fantbl setini 1 p1 68.0 72.0 0x52
