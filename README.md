@@ -1,16 +1,17 @@
 # ps3syscon
 PS3 syscon guide and fault finding
 
-Required Python 2 or Python 3 - Linux/ps3_syscon_uart_script.py
+## Linux users  
+Required Python 2 or Python 3 - [Linux/ps3_syscon_uart_script.py](/Linux/ps3_syscon_uart_script.py)
 
-Windows users 
+## Windows users 
   - [Windows/SysconReader/readme.md](/Windows/SysconReader/readme.md)
-  - Windows/syscon.ps1 (PowerShell script)
+  - [Windows/syscon.ps1](Windows/syscon.ps1) (PowerShell script)
     - Tested on Windows PowerShell 5.1 and PowerShell Core 7.2
     - Same syntax as the Python script
     - **Sherwood syscons not guaranteed to be working**
 
-Tested on Linux with python - Follow guide for requirements
+## Virtualbox environment
 
 Pre setup Debian VM - [VirtualboxVM details](/VirtualboxVM/README.md) - Guide, Download links (md5sum)
 
@@ -18,11 +19,15 @@ Pre setup Debian VM - [VirtualboxVM details](/VirtualboxVM/README.md) - Guide, D
 
 A = Fixed value
 
+00-7F = Step number of power on sequence
+
 80 = Poweron state
+
+90 = Poweroff state
 
 A0 = Power on immediatley after syscon reset
 
-Categories:
+## Categories:
 
 1 = System error
 2 = Fatal error
@@ -31,7 +36,7 @@ Categories:
 
 ------------------------------------------------
 
-Recorded errors:
+## Recorded errors:
 
 A003001 = POW_FAIL
 
