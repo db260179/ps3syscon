@@ -48,8 +48,8 @@ if __name__ == "__main__":
     try:
         # Check if required Python modules are installed
         import serial
-    except ImportError as e:
-        print(f"Error: {e}")
+    except ImportError:
+        print('Error: The pyserial module is required. You can install it with "pip install pyserial"')
         sys.exit(1)
     
     # Serial port configuration
