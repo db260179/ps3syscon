@@ -11,16 +11,6 @@ def main(serial_port, baud_rate, log_file):
         # Serial port configuration
         ser = serial.Serial(serial_port, baud_rate, timeout=2)
 
-        # Log file configuration
-        if args.logfile is not None:
-            try:
-                log_file = open(args.logfile, 'a')
-            except IOError as e:
-                print('Error: Unable to open log file: {}'.format(e))
-                sys.exit(1)
-        else:
-            log_file = None
-
         while True:
             # Read data from serial port
             data = ser.readline()
@@ -54,16 +44,29 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    if not os.path.exists(args.log_file):
-        print(f"Error: Log file '{args.log_file}' does not exist")
-        sys.exit(1)
-
     try:
         # Check if required Python modules are installed
         import serial
     except ImportError as e:
         print(f"Error: {e}")
         sys.exit(1)
+    
+    # Serial port configuration
+    try:
+        ser = serial.Serial(args.serial_port, args.baud_rate, timeout=1)
+    except serial.serialutil.SerialException as e:
+        print('Error: Unable to connect to serial port: {}'.format(e))
+        sys.exit(1)
+
+    # Log file configuration
+        if args.logfile is not None:
+            try:
+                log_file = open(args.logfile, 'a')
+            except IOError as e:
+                print('Error: Unable to open log file: {}'.format(e))
+                sys.exit(1)
+        else:
+            log_file = None
 
     # Call main function with parsed arguments
-    main(args.serial_port, args.baud_rate, args.log_file)
+    main(args.serial_port, args.baud_rate, args.logfile)
