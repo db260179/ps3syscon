@@ -1,13 +1,20 @@
 #!/usr/bin/python3
 from binascii import unhexlify as uhx
-from Crypto.Cipher import AES # pycryptodome
 import os
-import serial # pyserial
 import string
 import sys
 import time
 
 class PS3UART(object):
+
+    try:
+       # Check if required Python modules are installed
+       import serial # pyserial
+       from Crypto.Cipher import AES # pycryptodome
+    except ImportError:
+       print('Error: The pyserial and pycryptodome modules are required. You can install it with "pip install pyserial pycryptodome"')
+       sys.exit(1)
+       
     ser = serial.Serial()
     type = ''
 
