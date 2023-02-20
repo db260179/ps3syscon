@@ -145,7 +145,7 @@ ps3_syscon_uart-test()
     fi
 
     if [ "${baudrate}" = "" ]; then
-      echo "Please specify the serial baud rate mode to use i.e. Mullion - 57600 = CXR, 115200 = CXRF/SW"
+      echo "Please specify the serial baud rate mode to use i.e. Mullion - 57600 = CXR/SW, 115200 = CXRF"
       exit 1
     fi
 
@@ -166,7 +166,8 @@ Example of using the syscon option when first attempt to enter INT mode from EXT
 Enter syscon EXT mode - $0 syscon /dev/ttyUSB0 CXR
    
 In python shell authorise first - $ auth
-(If it fails validate that the connections are correct and your serial lead is working - you can use putty or screen to show the OK prompt)
+(If it fails validate that the connections are correct and your serial lead is working - you can rerun this script - ./ps3_syscon.sh syscontest, and check for serial connection issue!)
+(CXR should be 'OK' when turning on, CXRF should be '[mullion]' prompt - any other garbage means a bad connection or wrong way TX, RX connections? )
    
 If auth was successful will show:
 $ Auth successful
@@ -212,6 +213,8 @@ Addr:0x00003dfe should be 0x00ff
 Addr:0x00003ffe should be 0x00ff
   
 From now on you can be internal mode CXRF and do commands like - 'errlog and lasterrlog'
+
+Checkout the Fantables docs to tweak your ps3 fan settings in the syscon!
 
 EOF
    
