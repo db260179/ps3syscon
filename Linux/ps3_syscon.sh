@@ -28,6 +28,11 @@ ps3_syscon_uart()
       exit 1
     fi
 
+    echo "If 'auth' is failing, then run the script - ./ps3_diag_serial.py to verify that the serial connection is good!"
+    echo "REMEMBER! CXRF needs the DIAG lead to be shorted to GND (not required on SW models)"
+
+    sleep 3
+
     ./ps3_syscon_uart_script.py ${port} ${mode}
 
 }
