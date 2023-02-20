@@ -1,7 +1,6 @@
 #!/bin/bash
 # Syscon helper script for the python scripts
 
-
 if [ "${DEBUG}" = "true" ]; then
   set -ex
 else
@@ -150,13 +149,12 @@ ps3_syscon_uart-test()
       exit 1
     fi
 
-    echo "Entering Screen session - to exit hit the CTRL+A+D keys"
-    echo "Output of screen session is stored in - ~/ps3_syscon_uart-test.log"
+    echo "Displaying the serial output - to exit hit the CTRL+C keys"
+    echo "Output of session is stored in - ~/ps3_syscon_uart-test.log"
     echo "If screen output is garbage then try swapping the TX and RX leads when powering on the PS3"
-    echo "REMEMBER! CXRF needs the DIAG lead to be shorted to GND"
-    sleep 5
-    screen -L -Logfile ~/ps3_syscon_uart-test.log ${port} ${baudrate}
-    pgrep screen | xargs kill -9
+    echo "REMEMBER! CXRF needs the DIAG lead to be shorted to GND (not required on SW models)"
+    sleep 3
+    ./ps3_diag_serial.py -l ~/ps3_syscon_uart-test.log ${port} ${baudrate}
 
 }
 
