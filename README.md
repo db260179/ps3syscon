@@ -42,7 +42,7 @@ A0022110 = MK I2C ERROR (OR OTHER CLOCK's ERRORS)
 
 A0A02031 = Thermal monitor DI/DO not communicating to RSX (possible dead Diodes in RSX)
 
-A0201B02 = RSX VRAM FAIL - Faulty vrams - Borked RSX VRAM, NEC tokins or FBVDDQ power line
+A0201B02 = RSX VRAM FAIL - Faulty vrams - Borked RSX VRAM, NEC tokins, caps, a short or FBVDDQ power line
 
 A0203010 = BE_INIT OR BE_POWGOOD OR CLOCK ERRORS
 
@@ -50,7 +50,7 @@ A0213011 =  BE_SPI CS ERROR
 
 A0213013 = BE_SPI DI/DO ERROR - CELL not communicating to syscon via SPI (1.2V MC2_VDDIO and 1.2V BE_VCS no output) = Possible shorts on the line, check C4001 and trailing caps. Possible CELL dead?
 
-A0232102 = IC6301 faulty (1.5v RSX_VDDIO) or in that area
+A0232102 = IC6301 possible faulty - check other DC converters, caps etc in that power line from the schematics
 
 A0003001 = POW_FAIL
 
