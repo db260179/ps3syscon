@@ -9,7 +9,7 @@ def main(serial_port, baud_rate, log_file):
     print('Press Ctrl+C to exit')
     try:
         # Serial port configuration
-        ser = serial.Serial(serial_port, baud_rate, timeout=2)
+        ser = serial.Serial(serial_port, baud_rate, timeout=1)
 
         while True:
             # Read data from serial port
@@ -19,7 +19,8 @@ def main(serial_port, baud_rate, log_file):
             data_str = data.decode('utf-8')
 
             # Print data to screen
-            print(data_str)
+            print(data_str, end='')
+            sys.stdout.flush()
 
             # Write data to log file
             if log_file is not None:
