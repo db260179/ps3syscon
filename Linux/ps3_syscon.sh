@@ -11,6 +11,7 @@ ps3_syscon_uart()
 {
     port="$2"
     mode="$3"
+    logfile=""
 
     if [ "${port}" = "" ]; then
       echo "Please specify the serial port to use i.e. /dev/ttyUSB0"
@@ -30,10 +31,21 @@ ps3_syscon_uart()
 
     echo "If 'auth' is failing, then run the script - ./ps3_diag_serial.py to verify that the serial connection is good!"
     echo "REMEMBER! CXRF needs the DIAG lead to be shorted to GND (not required on SW models)"
+    
+    for i in "$4"; do
+        if [ "$i" = "-l" ]; then
+            logfile="$5"
+            break
+        fi
+    done
 
     sleep 3
 
-    ./ps3_syscon_uart_script.py ${port} ${mode}
+    if [ -n "$logfile" ]; then
+        ./ps3_syscon_uart_script.py ${port} ${mode} -l ${logfile}
+    else
+        ./ps3_syscon_uart_script.py ${port} ${mode}
+    fi
 
 }
 
@@ -227,7 +239,7 @@ EOF
 
 case "$1" in
   syscon)
-    ps3_syscon_uart "$1" "$2" "$3"
+    ps3_syscon_uart "$1" "$2" "$3" "$4" "$5"
     ;;
   sysconhelp)
     sysconhelp
@@ -251,7 +263,7 @@ case "$1" in
     echo ""
     echo "Usage: $0 sysconhelp - Show examples of using the syscon i.e Setting INT mode on first time etc"
     echo "Usage: $0 syscontest - Test serial output port - port = i.e. /dev/ttyUSB0, baudrate = 57600 (CXR) or 115200 (CXRF/SW)"
-    echo "Usage: $0 syscon {port} {mode} - port = serial port i.e. /dev/ttyUSB0, mode = CXR (EXT mode) or CXRF (INT mode) or SW"
+    echo "Usage: $0 syscon {port} {mode} [ Optional logfile: -l ~/ps3_uart-log.txt ] - port = serial port i.e. /dev/ttyUSB0, mode = CXR (EXT mode) or CXRF (INT mode) or SW"
     echo "Usage: $0 dump-cxr {port} {outputfile} - port = serial port i.e. /dev/ttyUSB0, outputfile = sysconCXR.dump"
     echo "Usage: $0 dump-cxrf {port} {outputfile} - port = serial port i.e. /dev/ttyUSB0, outputfile = sysconCXRF.dump"
     echo "Usage: $0 dump-sw {port} {outputfile} - port = serial port i.e. /dev/ttyUSB0, outputfile = sysconSW.dump"
