@@ -4,6 +4,8 @@ from binascii import unhexlify as uhx
 import os
 import string
 import sys
+import signal
+import argparse
 import time
 
 class PS3UART(object):
@@ -176,24 +178,45 @@ def main(argc, argv):
         sys.exit(1)
     ps3 = PS3UART(argv[1], argv[2])
     raw_input_c = vars(__builtins__).get('raw_input', input)
+
+    # Optional log file
+    if '-l' in argv:
+        log_file = open(argv[argv.index('-l') + 1], 'a')
+        print('Logging enabled. Writing to ' + argv[argv.index('-l') + 1])
+    else:
+        log_file = None
+
     while True:
-        in_data = raw_input_c('>$ ')
-        if(in_data.lower() == 'auth'):
-            print(ps3.auth())
-            continue
-        if(in_data.lower() == 'exit'):
+        print('Press Ctrl+C to exit')
+        try:
+           in_data = raw_input_c('>$ ')
+           if(in_data.lower() == 'auth'):
+              print(ps3.auth())
+              continue
+           ret = ps3.command(in_data)
+           if(argv[2] == 'CXR'):
+               output = '{:08X}'.format(ret[0]) + ' ' + ' '.join(ret[1])
+           elif(argv[2] == 'SW'):
+               if(len(ret[1]) > 0 and '\n' not in ret[1][0]):
+                   output = '{:08X}'.format(ret[0]) + ' ' + ' '.join(ret[1])
+               else:
+                   output = '{:08X}'.format(ret[0]) + '\n' + ''.join(ret[1])
+           else:
+               output = ret[1][0]
+           print(output)
+           if log_file:
+                log_file.write(output + '\n')
+        except KeyboardInterrupt:
+            print('\nExiting...')
+            if log_file:
+                log_file.close()
             break
-        ret = ps3.command(in_data)
-        if(argv[2] == 'CXR'):
-            print('{:08X}'.format(ret[0]) + ' ' +  ' '.join(ret[1]))
-        elif(argv[2] == 'SW'):
-            if(len(ret[1]) > 0 and '\n' not in ret[1][0]):
-                print('{:08X}'.format(ret[0]) + ' ' + ' '.join(ret[1]))
-            else:
-                print('{:08X}'.format(ret[0]) + '\n' + ''.join(ret[1]))
-        else:
-            print(ret[1][0])
 
 # Call main function with parsed arguments
 if __name__ == '__main__':
-    main(len(sys.argv), sys.argv)
+    parser = argparse.ArgumentParser()
+    parser.add_argument('serial_port', help='Serial port')
+    parser.add_argument('sc_type', choices=['CXR', 'CXRF', 'SW'], help='SC type ["CXR", "CXRF", "SW"]')
+    parser.add_argument('-l', '--log', help='Log file')
+    args = parser.parse_args()
+    main(3, [args.serial_port, args.sc_type] + (['-l', args.log] if args.log else []))
