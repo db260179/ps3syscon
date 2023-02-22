@@ -174,7 +174,7 @@ class PS3UART(object):
 
 def main(argc, argv):
     if(argc < 3):
-        print(os.path.basename(__file__) + ' <serial port> <sc type ["CXR", "CXRF", "SW"]>')
+        print(os.path.basename(__file__) + ' <serial port> <sc type ["CXR", "CXRF", "SW"]> <Optional:[-l log.txt]>')
         sys.exit(1)
     ps3 = PS3UART(argv[1], argv[2])
     raw_input_c = vars(__builtins__).get('raw_input', input)
@@ -214,9 +214,4 @@ def main(argc, argv):
 
 # Call main function with parsed arguments
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-    parser.add_argument('serial_port', help='Serial port')
-    parser.add_argument('sc_type', choices=['CXR', 'CXRF', 'SW'], help='SC type ["CXR", "CXRF", "SW"]')
-    parser.add_argument('-l', '--log', help='Log file')
-    args = parser.parse_args()
-    main(3, [args.serial_port, args.sc_type] + (['-l', args.log] if args.log else []))
+    main(len(sys.argv), sys.argv)
