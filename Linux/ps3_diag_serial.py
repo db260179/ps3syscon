@@ -16,7 +16,7 @@ def main(serial_port, baud_rate, log_file):
             data = ser.readline()
 
             # Decode data from bytes to string
-            data_str = data.decode('utf-8')
+            data_str = data.decode('utf-8','backslashreplace')
 
             # Print data to screen
             print(data_str, end='')
