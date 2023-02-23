@@ -42,6 +42,7 @@ ps3_syscon_uart()
     sleep 3
 
     if [ -n "$logfile" ]; then
+        echo "Outputting SYSCON status from PS3 to screen and ${logfile}"
         ./ps3_syscon_uart_script.py ${port} ${mode} -l ${logfile}
     else
         ./ps3_syscon_uart_script.py ${port} ${mode}
@@ -149,6 +150,7 @@ ps3_syscon_uart-test()
 {
     port="$2"
     baudrate="$3"
+    logfile=""
 
     if [ "${port}" = "" ]; then
       echo "Please specify the serial port to use i.e. /dev/ttyUSB0"
@@ -166,12 +168,25 @@ ps3_syscon_uart-test()
       exit 1
     fi
 
+    for i in "$4"; do
+        if [ "$i" = "-l" ]; then
+            logfile="$5"
+            break
+        fi
+    done
+
     echo "Displaying the serial output - to exit hit the CTRL+C keys"
-    echo "Output of session is stored in - ~/ps3_syscon_uart-test.log"
     echo "If screen output is garbage then try swapping the TX and RX leads when powering on the PS3"
     echo "REMEMBER! CXRF needs the DIAG lead to be shorted to GND (not required on SW models)"
+
     sleep 3
-    ./ps3_diag_serial.py -l ~/ps3_syscon_uart-test.log ${port} ${baudrate}
+
+    if [ -n "$logfile" ]; then
+        echo "Outputting serial status from PS3 to screen and ${logfile}"
+        ./ps3_diag_serial.py ${port} ${baudrate} -l ${logfile}
+    else
+        ./ps3_diag_serial.py ${port} ${baudrate}
+    fi
 
 }
 
