@@ -254,6 +254,26 @@ EOF
    
 }
 
+bash_aliases()
+{
+new_aliases=(
+  "alias ps3cxrf='$HOME/ps3syscon/Linux/ps3_syscon.sh syscon /dev/ttyUSB0 CXRF -l $HOME/ps3_uart_CXRF.log'"
+  "alias ps3cxr='$HOME/ps3syscon/Linux/ps3_syscon.sh syscon /dev/ttyUSB0 CXR -l $HOME/ps3_uart_CXR.log'"
+  "alias syscontestCXRF='$HOME/ps3syscon/Linux/ps3_syscon.sh syscontest /dev/ttyUSB0 115200'"
+  "alias syscontestCXR='$HOME/ps3syscon/Linux/ps3_syscon.sh syscontest /dev/ttyUSB0 57600'"
+  "alias sysconhelp='$HOME/ps3syscon/Linux/ps3_syscon.sh sysconhelp'"
+)
+
+# Check if each alias exists in .bashrc
+for alias in "${new_aliases[@]}"; do
+  if ! grep -q "$alias" ~/.bashrc; then
+    # If it doesn't exist, add it to .bashrc
+    echo "$alias" >> ~/.bashrc
+    source $HOME/.bashrc
+  fi
+done
+}
+
 case "$1" in
   syscon)
     ps3_syscon_uart "$1" "$2" "$3" "$4" "$5"
@@ -276,6 +296,9 @@ case "$1" in
   patch-cxr)
     syscon_patch_cxr "$1" "$2" "$3"
     ;;
+  add-cmdalias)
+    bash_aliases
+    ;;
   *)
     echo ""
     echo "Usage: $0 sysconhelp - Show examples of using the syscon i.e Setting INT mode on first time etc"
@@ -285,6 +308,8 @@ case "$1" in
     echo "Usage: $0 dump-cxrf {port} {outputfile} - port = serial port i.e. /dev/ttyUSB0, outputfile = sysconCXRF.dump"
     echo "Usage: $0 dump-sw {port} {outputfile} - port = serial port i.e. /dev/ttyUSB0, outputfile = sysconSW.dump"
     echo "Usage: $0 patch-cxr {port} {patchfile} - port = serial port i.e. /dev/ttyUSB0, patchfile = yourpatchfile.patch"
+    echo "Usage: $0 add-cmdalias - Add above commands as quick aliases (edit .bashrc with your ports,speed etc) - ps3cxrf=syscon CXRF mode, ps3cxr=syscon CXR mode, \
+syscontestCXRF=syscontest 115200, syscontestCXR=syscontest 57600, sysconhelp=sysconhelp"
     echo ""
     exit 1
     ;;
