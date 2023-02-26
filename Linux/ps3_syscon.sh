@@ -7,6 +7,8 @@ else
   set -e
 fi
 
+SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
+
 ps3_syscon_uart()
 {
     port="$2"
@@ -29,7 +31,7 @@ ps3_syscon_uart()
       exit 1
     fi
 
-    echo "If 'auth' is failing, then run the script - ./ps3_diag_serial.py to verify that the serial connection is good!"
+    echo "If 'auth' is failing, then run the script - ${SCRIPT_DIR}/ps3_diag_serial.py to verify that the serial connection is good!"
     echo "REMEMBER! CXRF needs the DIAG lead to be shorted to GND (not required on SW models)"
     
     for i in "$4"; do
@@ -43,9 +45,9 @@ ps3_syscon_uart()
 
     if [ -n "$logfile" ]; then
         echo "Outputting SYSCON status from PS3 to screen and ${logfile}"
-        ./ps3_syscon_uart_script.py ${port} ${mode} -l ${logfile}
+        ${SCRIPT_DIR}/ps3_syscon_uart_script.py ${port} ${mode} -l ${logfile}
     else
-        ./ps3_syscon_uart_script.py ${port} ${mode}
+        ${SCRIPT_DIR}/ps3_syscon_uart_script.py ${port} ${mode}
     fi
 
 }
@@ -71,7 +73,7 @@ syscon_dump_cxr()
       exit 1
     fi
 
-    ./SysconEEPdumpCXR-EXT.py ${port} ${outputfile}
+    ${SCRIPT_DIR}/SysconEEPdumpCXR-EXT.py ${port} ${outputfile}
 }
 
 syscon_dump_cxrf()
@@ -95,7 +97,7 @@ syscon_dump_cxrf()
       exit 1
     fi
 
-    ./SysconEEPdumpCXRF-INT.py ${port} ${outputfile}
+    ${SCRIPT_DIR}/SysconEEPdumpCXRF-INT.py ${port} ${outputfile}
 }
 
 syscon_dump_sw()
@@ -119,7 +121,7 @@ syscon_dump_sw()
       exit 1
     fi
 
-    ./SysconEEPdumpSW.py ${port} ${outputfile}
+    ${SCRIPT_DIR}/SysconEEPdumpSW.py ${port} ${outputfile}
 }
 
 syscon_patch_cxr()
@@ -143,7 +145,7 @@ syscon_patch_cxr()
       exit 1
     fi
 
-    ./SysconPatchCXR.py ${port} ${patchfile}
+    ${SCRIPT_DIR}/SysconPatchCXR.py ${port} ${patchfile}
 }
 
 ps3_syscon_uart-test()
@@ -183,9 +185,9 @@ ps3_syscon_uart-test()
 
     if [ -n "$logfile" ]; then
         echo "Outputting serial status from PS3 to screen and ${logfile}"
-        ./ps3_diag_serial.py ${port} ${baudrate} -l ${logfile}
+        ${SCRIPT_DIR}/ps3_diag_serial.py ${port} ${baudrate} -l ${logfile}
     else
-        ./ps3_diag_serial.py ${port} ${baudrate}
+        ${SCRIPT_DIR}/ps3_diag_serial.py ${port} ${baudrate}
     fi
 
 }
