@@ -1,17 +1,17 @@
-Default DIA-001 fantables
+Default DIA-002 fantables
 
-tshutdown get 0
+tshutdown getini 0
 TZone No:00
 1st BE Primary  Temperature:91.0(0x5b00)
 
-tshutdown get 1
+tshutdown getini 1
 TZone No:01
 RSX Primary  Temperature:97.0(0x6100)
 
 
 0 CELL
 
-fantbl get 0
+fantbl getini 0
 fancon No:00
 P0: TempD:0.0(0x0000) - TempU:76.0(0x4c00) duty:20%(0x33)
 P1: TempD:52.0(0x3400) - TempU:77.0(0x4d00) duty:25%(0x40)
@@ -36,7 +36,7 @@ P19: TempD:255.75(0xffff) - TempU:255.75(0xffff) duty:100%(0xff)
 
 1 RSX
 
-fantbl get 1
+fantbl getini 1
 fancon No:01
 P0: TempD:0.0(0x0000) - TempU:78.0(0x4e00) duty:20%(0x33)
 P1: TempD:59.50(0x3b80) - TempU:79.0(0x4f00) duty:25%(0x40)
@@ -61,7 +61,6 @@ P19: TempD:255.75(0xffff) - TempU:255.75(0xffff) duty:100%(0xff)
 
 Tweaked settings:
 
-tshutdown set 1 91
 tshutdown setini 1 91
 
 0x33 = 20%

@@ -116,19 +116,17 @@ Tweak settings:
 
 Tweaked shutdown
 CELL
-tshutdown set 0 91.0
 tshutdown setini 0 91.0
 
 RSX
-tshutdown set 1 91.0
 tshutdown setini 1 91.0
 
 
 CELL 0 hex set
 
-fantbl setini 0 p0 0.0 70.0 0x49
-fantbl setini 0 p1 68.0 72.0 0x52
-fantbl setini 0 p2 71.0 74.50 0x57
+fantbl setini 0 p0 0.0 70.0 0x40
+fantbl setini 0 p1 68.0 72.0 0x4d
+fantbl setini 0 p2 71.0 74.50 0x52
 fantbl setini 0 p3 73.0 75.50 0x5c
 fantbl setini 0 p4 74.50 77.0 0x63
 fantbl setini 0 p5 75.0 80.0 0x73
@@ -139,9 +137,9 @@ fantbl setini 0 p9 80.0 90.0 0xff
 
 RSX 1 hex set
 
-fantbl setini 1 p0 0.0 70.0 0x49
-fantbl setini 1 p1 68.0 72.0 0x52
-fantbl setini 1 p2 71.0 74.50 0x57
+fantbl setini 1 p0 0.0 70.0 0x40
+fantbl setini 1 p1 68.0 72.0 0x4d
+fantbl setini 1 p2 71.0 74.50 0x52
 fantbl setini 1 p3 73.0 75.50 0x5c
 fantbl setini 1 p4 74.50 77.0 0x63
 fantbl setini 1 p5 75.0 80.0 0x73
