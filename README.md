@@ -42,7 +42,7 @@ A0022110 = MK I2C ERROR (OR OTHER CLOCK's ERRORS)
 
 A0A02031 = Thermal monitor DI/DO not communicating to RSX (possible dead Diodes in RSX)
 
-A0201B02 = RSX VRAM FAIL - Faulty vrams - Borked RSX VRAM, NEC tokins, caps, a short or FBVDDQ power line
+A0201B02 = RSX VRAM FAIL - Faulty vrams - Borked RSX VRAM, VDDIO reading on RSX is infinite - Dead RSX
 
 A0203010 = BE_INIT OR BE_POWGOOD OR CLOCK ERRORS
 
