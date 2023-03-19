@@ -84,7 +84,7 @@ class PS3UART(object):
             self.send(com + '\r\n')
 
         time.sleep(wait)
-        answer = self.receive().decode('ascii').strip()
+        answer = self.receive().decode('ascii', 'ignore').strip()
         if(verbose):
             print('Answer: ' + answer)
 
