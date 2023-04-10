@@ -82,9 +82,9 @@ A0821200 = HDMI Power on failure (IC2502) - Sil9132CBU chip failure or related p
 
 A0902203 = SB GLOD issues, system update to repair nand/nor hashes
 
-A0093003 = CELL_POW_FAIL poweroff state (Potential NEC tokins issue and VCC)
+A0093003 = CELL_POW_FAIL poweroff state (Potential NEC tokins issue and VCC or Dead CELL)
 
-A0093004 = RSX_POW_FAIL poweroff state (Potential NEC tokins issue and VCC)
+A0093004 = RSX_POW_FAIL poweroff state (Potential NEC tokins issue and VCC or Dead RSX (core reads 0.2 ohms))
 
 
 ## More in depth SYSCON Error codes meaning
