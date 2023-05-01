@@ -56,7 +56,7 @@ A0003001 = POW_FAIL
 
 A0302203 = SB_SPI DI/DO ERROR
 
-A0313032 = SB_CLOCK OR INIT ERROR
+A0313032 = SB_CLOCK OR INIT ERROR (can be related to the CELL solder balls not making proper connection and will most likely had previous errors like A0403034, A0404401) - check for voltages first!
 
 A0401001 = BE VRAM Power Fail - running state possible tokins issues
 
@@ -66,7 +66,9 @@ A0401301 = BE PLL Unlock
 
 A0402120 = HDMI Error (IC2502)
 
-A0403034, A0404402,A0404411 = Poor BGA solder connections for RSX ( you will see errors like - [POWERSEQ] Error : BitTraining RSX:RRAC:RX0:GLOBAL1:RX_STATUS )
+A0403034, A0404402,A0404411 (RSX) = Poor BGA solder connections for RSX need reflow or reball ( you will see errors like - [POWERSEQ] Error : BitTraining RSX:RRAC:RX0:GLOBAL1:RX_STATUS )
+A0403034, A0404401 (CELL) = Poor BGA solder connections for CELL need reflow or reball ( you will see errors like - [POWERSEQ] Error : BitTraining BE:RRAC:RX0:GLOBAL1:RX_STATUS )
+(With the above errors you will get other errors with the bittraining they are all related to the poor BGA connection or broken traces under the chips)
 
 A0404002 = RSX_SPI DI/DO ERROR
 
