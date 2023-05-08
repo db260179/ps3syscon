@@ -44,6 +44,8 @@ A0A02031 = Thermal monitor DI/DO not communicating to RSX (possible dead Diodes 
 
 A0201B02 = RSX VRAM FAIL - Faulty vrams - Borked RSX VRAM, VDDIO reading on RSX is infinite - Dead RSX
 
+A0201B01 = CELL - Low resistance on VDDIO - should be in mega ohms = Dead CELL
+
 A0203010 = BE_INIT OR BE_POWGOOD OR CLOCK ERRORS
 
 A0213011 =  BE_SPI CS ERROR
@@ -71,7 +73,7 @@ A0403034, A0404402,A0404411 (RSX) = Poor BGA solder connections for RSX need ref
 A0403034, A0404401 (CELL) = Poor BGA solder connections for CELL need reflow or reball ( you will see errors like - [POWERSEQ] Error : BitTraining BE:RRAC:RX0:GLOBAL1:RX_STATUS )
 (With the above errors you will get other errors with the BitTraining they are all related to the poor BGA connection or broken traces under the chips)
 
-A0404002 = RSX_SPI DI/DO ERROR
+A0404002 = RSX_SPI DI/DO ERROR (Poor BGA connection for RSX can cause this error or DEAD RSX)
 
 A0404411 = ERROR ON RSX SPI?
 
@@ -88,6 +90,13 @@ A0902203 = SB GLOD issues, system update to repair nand/nor hashes
 A0093003 = CELL_POW_FAIL poweroff state (Potential NEC tokins issue and VCC or Dead/Short in the CELL)
 
 A0093004 = RSX_POW_FAIL poweroff state (Potential NEC tokins issue and VCC or Dead/Short in the RSX (core reads 0.2 ohms))
+
+## Notes on error codes
+
+A0093003 and A0093004 (usually associate with nec tokin faults) have found to have issues with shorts on the PCB layer - COKxx boards seems to have a defect of the pcb layers (too much heating stresses the pcb layers) shorting on the VDD line to the Buck controllers (5v)
+which causes leaking voltage.
+
+Sometimes an error code can have an associate error code with it as seen with A0403034 (data error) and RS:RRAC:BX0:BX:FLEXIO_ID Bittraining errors = CELL cant talk or understand the RSX ID code (seen in swapping an 90nm to 65nm or 40nm)
 
 
 ## More in depth SYSCON Error codes meaning
