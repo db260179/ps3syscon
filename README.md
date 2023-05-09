@@ -44,7 +44,7 @@ A0A02031 = Thermal monitor DI/DO not communicating to RSX (possible dead Diodes 
 
 A0201B02 = RSX VRAM FAIL - Faulty vrams - Borked RSX VRAM, VDDIO reading on RSX is infinite - Dead RSX
 
-A0201B01 = CELL - Low resistance on VDDIO - should be in mega ohms = Dead CELL
+A0201B01 = CELL - Low resistance on VDDIO (reading should be in megaohms), resistance readings near the tokins read higher than 4.5ohms = Dead core on the CELL
 
 A0203010 = BE_INIT OR BE_POWGOOD OR CLOCK ERRORS
 
