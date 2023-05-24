@@ -260,13 +260,13 @@ def main():
     input_frame.grid(row=0, column=0, padx=10, pady=10)
 
     # Create port label and entry
-    port_label = tk.Label(input_frame, text="Serial Port:")
+    port_label = tk.Label(input_frame, text="Serial Port: (Examples: /dev/ttyUSB0 or COM1)")
     port_label.grid(row=0, column=0, padx=5, pady=5, sticky="e")
     port_entry = tk.Entry(input_frame)
     port_entry.grid(row=0, column=1, padx=5, pady=5, sticky="w")
 
     # Create SC type label and combobox
-    sc_type_label = tk.Label(input_frame, text="SC Type:")
+    sc_type_label = tk.Label(input_frame, text="SC Type: (Syscon type)")
     sc_type_label.grid(row=1, column=0, padx=5, pady=5, sticky="e")
     sc_type_combobox = ttk.Combobox(input_frame, values=["CXR", "CXRF", "SW"])
     sc_type_combobox.set("CXR")  # Set the default value to "CXR"
