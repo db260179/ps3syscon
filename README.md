@@ -15,6 +15,8 @@ Required Python 2 or Python 3 - [Linux/ps3_syscon_uart_script.py](/Linux/ps3_sys
 
 Python GUI version of the uart script [gui_ps3_syscon_uart_script.py](/gui_ps3_syscon_uart_script.py)
 
+Make sure to have done 'pip install pyserial pycryptodomex' for this script to work!
+
 Debian/Ubuntu:
 
 ```
@@ -54,6 +56,12 @@ pip install tkinter
 
 This command will install the tkinter package for Python.
 ```
+
+## Without installing Python
+
+Linux 64bit - Linux64_gui_ps3_syscon_uart_script[/Linux/Linux64_gui_ps3_syscon_uart_script]
+
+Windows 64bit - Windows64_gui_ps3_syscon_uart_script.exe[/Windows/Windows64_gui_ps3_syscon_uart_script.exe]
 
 ## Virtualbox environment
 

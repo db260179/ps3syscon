@@ -1,5 +1,5 @@
 from binascii import unhexlify as uhx
-from Crypto.Cipher import AES
+from Crypto.Cipher import AES # Requires pycryptodomex module
 import os
 import string
 import sys
