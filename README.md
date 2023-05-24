@@ -11,6 +11,50 @@ Required Python 2 or Python 3 - [Linux/ps3_syscon_uart_script.py](/Linux/ps3_sys
     - Same syntax as the Python script
     - **Sherwood syscons not guaranteed to be working**
 
+## Any OS (python3-tk)
+
+GUI version 'gui_ps3_syscon_uart_script.py'
+
+Debian/Ubuntu:
+
+```
+sudo apt-get install python3-tk
+
+This command installs the python3-tk package, which includes tkinter for Python 3.
+```
+
+Windows: 
+
+tkinter is usually included with the standard Python installation. However, if it's not already installed, you can follow these steps to install it:
+
+```
+Open a web browser and go to the official Python website: https://www.python.org/
+
+Click on the "Downloads" tab and scroll down to find the latest stable version of Python 3 for Windows.
+
+Download the installer appropriate for your Windows version (32-bit or 64-bit).
+
+Run the installer and follow the instructions. Make sure to check the "Add Python to PATH" option during installation.
+
+Once Python is installed, open the Command Prompt (search for "cmd" in the Start menu).
+
+Type python and press Enter to open the Python interpreter. You should see the Python version and prompt (>>>) indicating that Python is successfully installed.
+```
+```
+Enter the following command to check if tkinter is installed:
+
+python
+Copy code
+import tkinter
+If there are no errors, tkinter is already installed. Otherwise, you will receive an error message indicating that the module is not found.
+
+If tkinter is not installed, you can install it using the following command:
+
+pip install tkinter
+
+This command will install the tkinter package for Python.
+```
+
 ## Virtualbox environment
 
 Pre setup Debian VM - [VirtualboxVM details](/VirtualboxVM/README.md) - Guide, Download links (md5sum)
