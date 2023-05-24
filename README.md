@@ -60,7 +60,7 @@ This command will install the tkinter package for Python.
 ## Without installing Python
 
 Linux 64bit - [Linux64_gui_ps3_syscon_uart_script](/Linux/Linux64_gui_ps3_syscon_uart_script)
-(
+
 Windows 64bit - [Windows64_gui_ps3_syscon_uart_script.exe](/Windows/Windows64_gui_ps3_syscon_uart_script.exe)
 
 ## Virtualbox environment
