@@ -216,11 +216,40 @@ def main():
 
     def show_help():
         commands = [
-            "eepcsum (check EEPROM checksum)",
+            "External mode:",
             "EEP GET (get EEPROM address)",
-            "EEP SET (set EEPROM address value)"
+            "EEP SET (set EEPROM address value)",
+            "ERRLOG GET 00 (get errorlog from code 0 - repeat until 1F)",
+            "",
+            "Internal mode:",
+            "eepcsum (check EEPROM checksum)",
+            "errlog (get errlog)",
+            "clearerrlog (clear errorlog)",
+            "r (read from eeprom address)",
+            "w (write to eeprom address)",
+            "fantbl (get/set/getini/setini/gettable/settable)",
+            "patchvereep (get patched version)",
+            "",
+            "Read the PS3-Uart-Guide-V2.pdf for further information"
         ]
-        messagebox.showinfo("Available Commands", "\n".join(commands))
+
+        # Create the helper window
+        helper_window = tk.Toplevel()
+        helper_window.title("Available Commands")
+
+        # Create a text widget to display the commands
+        commands_text = tk.Text(helper_window, height=len(commands), width=60)
+        commands_text.pack()
+
+        # Insert the commands into the text widget
+        for command in commands:
+            commands_text.insert(tk.END, command + "\n")
+
+        # Disable text editing
+        commands_text.configure(state=tk.DISABLED)
+
+        # Start the Tkinter event loop for the helper window
+        helper_window.mainloop()
 
     # Create the main window
     window = tk.Tk()
@@ -228,40 +257,44 @@ def main():
 
     # Create input frame
     input_frame = tk.Frame(window)
-    input_frame.pack(pady=10)
+    input_frame.grid(row=0, column=0, padx=10, pady=10)
 
     # Create port label and entry
     port_label = tk.Label(input_frame, text="Serial Port:")
-    port_label.pack(side=tk.LEFT)
+    port_label.grid(row=0, column=0, padx=5, pady=5, sticky="e")
     port_entry = tk.Entry(input_frame)
-    port_entry.pack(side=tk.LEFT)
+    port_entry.grid(row=0, column=1, padx=5, pady=5, sticky="w")
 
     # Create SC type label and combobox
     sc_type_label = tk.Label(input_frame, text="SC Type:")
-    sc_type_label.pack(side=tk.LEFT)
+    sc_type_label.grid(row=1, column=0, padx=5, pady=5, sticky="e")
     sc_type_combobox = ttk.Combobox(input_frame, values=["CXR", "CXRF", "SW"])
     sc_type_combobox.set("CXR")  # Set the default value to "CXR"
-    sc_type_combobox.pack(side=tk.LEFT)
+    sc_type_combobox.grid(row=1, column=1, padx=5, pady=5, sticky="w")
 
     # Create command label and entry
     command_label = tk.Label(window, text="Command:")
-    command_label.pack()
+    command_label.grid(row=1, column=0, padx=10, pady=5, sticky="w")
     command_entry = tk.Entry(window)
-    command_entry.pack()
+    command_entry.grid(row=1, column=1, padx=10, pady=5, sticky="we")
 
     # Create output text widget
-    output_text = tk.Text(window, height=10, width=40)
-    output_text.pack()
+    output_text = tk.Text(window, height=10, width=60)
+    output_text.grid(row=2, column=0, columnspan=2, padx=10, pady=10, sticky="nsew")
 
     # Create buttons
     input_button = tk.Button(window, text="Send Command", command=handle_command)
-    input_button.pack(pady=5)
+    input_button.grid(row=3, column=0, padx=10, pady=5, sticky="we")
 
     auth_button = tk.Button(window, text="Auth", command=handle_auth)
-    auth_button.pack(pady=5)
+    auth_button.grid(row=3, column=1, padx=10, pady=5, sticky="we")
 
     help_button = tk.Button(window, text="Help", command=show_help)
-    help_button.pack(pady=5)
+    help_button.grid(row=4, column=0, columnspan=2, padx=10, pady=5, sticky="we")
+
+    # Configure grid weights to make the widgets scale with the window
+    window.grid_rowconfigure(2, weight=1)
+    window.grid_columnconfigure(1, weight=1)
 
     # Start the Tkinter event loop
     window.mainloop()
