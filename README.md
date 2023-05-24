@@ -13,7 +13,7 @@ Required Python 2 or Python 3 - [Linux/ps3_syscon_uart_script.py](/Linux/ps3_sys
 
 ## Any OS (python3-tk)
 
-GUI version 'gui_ps3_syscon_uart_script.py'
+Python GUI version of the uart script [gui_ps3_syscon_uart_script.py](/gui_ps3_syscon_uart_script.py)
 
 Debian/Ubuntu:
 
