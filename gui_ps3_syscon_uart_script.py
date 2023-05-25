@@ -7,6 +7,7 @@ import signal
 import argparse
 import time
 import serial.tools.list_ports
+import webbrowser
 import tkinter as tk
 from tkinter import messagebox
 from tkinter import ttk
@@ -170,11 +171,16 @@ class PS3UART(object):
 
 def main():
     def handle_command():
-        port = port_entry.get()
+        port = port_combobox.get()  # Retrieve the selected port from the combobox
+        command = command_entry.get()
         sc_type = sc_type_combobox.get()
         if not port or not sc_type:
             messagebox.showerror("Error", "Please enter both the serial port and SC type.")
             return
+        
+        print("Port:", port)  # Debug print
+        print("SC Type:", sc_type)  # Debug print
+        print ("Command:", command) # Debug command
 
         if sc_type == "CXR":
             serial_speed = "57600"
@@ -199,7 +205,7 @@ def main():
         output_text.insert(tk.END, output + '\n')
 
     def handle_auth():
-        port = port_entry.get()
+        port = port_combobox.get()  # Retrieve the selected port from the combobox
         sc_type = sc_type_combobox.get()
         if not port or not sc_type:
             messagebox.showerror("Error", "Please enter the serial port, SC type.")
@@ -214,6 +220,10 @@ def main():
         result = ps3.auth()
         messagebox.showinfo("Authentication Result", result)
         output_text.insert(tk.END, result + '\n')
+
+    def open_error_logs_lookup():
+        url = "https://www.psdevwiki.com/ps3/Syscon_Error_Codes"  # psdevwiki ps3
+        webbrowser.open(url)
 
     def show_help():
         commands = [
@@ -252,6 +262,9 @@ def main():
         # Start the Tkinter event loop for the helper window
         helper_window.mainloop()
 
+    def refresh_ports():
+        port_combobox['values'] = serial.tools.list_ports.comports()
+
     # Create the main window
     window = tk.Tk()
     window.title("PS3UART GUI")
@@ -263,8 +276,10 @@ def main():
     # Create port label and entry
     port_label = tk.Label(input_frame, text="Serial Port: (Examples: /dev/ttyUSB0 or COM1)")
     port_label.grid(row=0, column=0, padx=5, pady=5, sticky="e")
-    port_entry = tk.Entry(input_frame)
-    port_entry.grid(row=0, column=1, padx=5, pady=5, sticky="w")
+    port_combobox = ttk.Combobox(input_frame, values=serial.tools.list_ports.comports())
+    port_combobox.grid(row=0, column=1, padx=5, pady=5, sticky="w")
+    refresh_button = tk.Button(input_frame, text="Refresh", command=refresh_ports)
+    refresh_button.grid(row=0, column=2, padx=5, pady=5, sticky="w")
 
     # Get available serial ports
     available_ports = [port.device for port in serial.tools.list_ports.comports()]
@@ -272,7 +287,6 @@ def main():
     # Create port dropdown list
     port_combobox = ttk.Combobox(input_frame, values=available_ports)
     port_combobox.grid(row=0, column=1, padx=5, pady=5, sticky="w")
-
 
     # Create SC type label and combobox
     sc_type_label = tk.Label(input_frame, text="SC Type: (Syscon type)")
@@ -300,6 +314,9 @@ def main():
 
     help_button = tk.Button(window, text="Help", command=show_help)
     help_button.grid(row=4, column=0, columnspan=2, padx=10, pady=5, sticky="we")
+
+    error_logs_button = tk.Button(window, text="Psdevwiki - Error logs", command=open_error_logs_lookup)
+    error_logs_button.grid(row=5, column=0, columnspan=2, padx=10, pady=5, sticky="we")
 
     # Configure grid weights to make the widgets scale with the window
     window.grid_rowconfigure(2, weight=1)
