@@ -6,6 +6,7 @@ import sys
 import signal
 import argparse
 import time
+import serial.tools.list_ports
 import tkinter as tk
 from tkinter import messagebox
 from tkinter import ttk
@@ -264,6 +265,14 @@ def main():
     port_label.grid(row=0, column=0, padx=5, pady=5, sticky="e")
     port_entry = tk.Entry(input_frame)
     port_entry.grid(row=0, column=1, padx=5, pady=5, sticky="w")
+
+    # Get available serial ports
+    available_ports = [port.device for port in serial.tools.list_ports.comports()]
+
+    # Create port dropdown list
+    port_combobox = ttk.Combobox(input_frame, values=available_ports)
+    port_combobox.grid(row=0, column=1, padx=5, pady=5, sticky="w")
+
 
     # Create SC type label and combobox
     sc_type_label = tk.Label(input_frame, text="SC Type: (Syscon type)")
