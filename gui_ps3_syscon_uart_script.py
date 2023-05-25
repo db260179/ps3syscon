@@ -298,6 +298,7 @@ def main():
     # Create command label and entry
     command_label = tk.Label(window, text="Command:")
     command_label.grid(row=1, column=0, padx=10, pady=5, sticky="w")
+
     command_entry = tk.Entry(window)
     command_entry.grid(row=1, column=1, padx=10, pady=5, sticky="we")
 
@@ -313,10 +314,10 @@ def main():
     auth_button.grid(row=3, column=1, padx=10, pady=5, sticky="we")
 
     help_button = tk.Button(window, text="Help", command=show_help)
-    help_button.grid(row=4, column=0, columnspan=2, padx=10, pady=5, sticky="we")
+    help_button.grid(row=4, column=0, padx=10, pady=5, sticky="we")
 
     error_logs_button = tk.Button(window, text="Psdevwiki - Error logs", command=open_error_logs_lookup)
-    error_logs_button.grid(row=5, column=0, columnspan=2, padx=10, pady=5, sticky="we")
+    error_logs_button.grid(row=4, column=1, padx=10, pady=5, sticky="we")
 
     # Configure grid weights to make the widgets scale with the window
     window.grid_rowconfigure(2, weight=1)
