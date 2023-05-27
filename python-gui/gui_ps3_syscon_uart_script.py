@@ -294,8 +294,14 @@ def main():
         # Path to gui_diag_serial.py
         script_path = "gui_diag_serial.py"
 
+        # Determine the platform (Windows or Linux) and set the appropriate command
+        if sys.platform.startswith('win'):
+            command = ["python", script_path, serial_port, baud_rate]
+        else:
+            command = ["python3", script_path, serial_port, baud_rate]
+
         # Run the gui_diag_serial.py script using subprocess
-        subprocess.run(["python3", script_path, serial_port, baud_rate])
+        subprocess.run(command)
 
     # Create the main window
     window = tk.Tk()

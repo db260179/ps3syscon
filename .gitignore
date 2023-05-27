@@ -1,3 +1,6 @@
 /gui_ps3_syscon_uart_script.spec
 /build
 /dist
+python-gui/gui_ps3_syscon_uart_script.spec
+python-gui/build
+python-gui/dist
