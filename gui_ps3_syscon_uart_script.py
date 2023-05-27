@@ -169,6 +169,12 @@ class PS3UART(object):
             else:
                 return 'scopen response invalid'
 
+    def read_syscon_serial_output(self):
+        self.send('serialout\r\n')
+        time.sleep(0.1)
+        output = self.receive().decode('ascii', 'ignore').strip()
+        return output
+
 def main():
     def handle_command():
         port = port_combobox.get()  # Retrieve the selected port from the combobox
@@ -250,7 +256,7 @@ def main():
 
         # Create a text widget to display the commands
         commands_text = tk.Text(helper_window, height=len(commands), width=60)
-        commands_text.pack()
+        commands_text.pack(fill=tk.BOTH, expand=True)
 
         # Insert the commands into the text widget
         for command in commands:
@@ -261,9 +267,47 @@ def main():
 
         # Start the Tkinter event loop for the helper window
         helper_window.mainloop()
-
+        
     def refresh_ports():
-        port_combobox['values'] = serial.tools.list_ports.comports()
+        ports = []
+        for port in serial.tools.list_ports.comports():
+            if "Serial" in port.description:
+                ports.append(port.device)
+        port_combobox['values'] = ports
+
+    def handle_syscon_serial_output():
+        port = port_combobox.get()  # Retrieve the selected port from the combobox
+        sc_type = sc_type_combobox.get()
+        if not port or not sc_type:
+            messagebox.showerror("Error", "Please enter the serial port and SC type.")
+            return
+
+        if sc_type == "CXR":
+            serial_speed = "57600"
+        else:
+            serial_speed = "115200"
+
+        ps3 = PS3UART(port, sc_type, serial_speed)
+
+        # Create a new window for displaying the output
+        output_window = tk.Toplevel()
+        output_window.title("Syscon Serial Output")
+
+        # Create a text widget to display the output
+        output_text = tk.Text(output_window, height=20, width=100)
+        output_text.pack(fill=tk.BOTH, expand=True)
+
+        # Function to update the output text widget with the latest serial output
+        def update_output():
+            output = ps3.read_syscon_serial_output()
+            output_text.insert(tk.END, output + '\n')
+            output_text.see(tk.END)  # Scroll to the bottom to show the latest output
+
+            # Schedule the next update after a delay (in milliseconds)
+            output_text.after(100, update_output)
+
+        # Start updating the output text widget
+        update_output()
 
     # Create the main window
     window = tk.Tk()
@@ -318,6 +362,10 @@ def main():
 
     error_logs_button = tk.Button(window, text="Psdevwiki - Error logs", command=open_error_logs_lookup)
     error_logs_button.grid(row=4, column=1, padx=10, pady=5, sticky="we")
+
+    # Create Syscon Serial Output button
+    syscon_serial_output_button = tk.Button(window, text="Diagnose Syscon Serial Output", command=handle_syscon_serial_output)
+    syscon_serial_output_button.grid(row=5, column=0, columnspan=2, padx=10, pady=5, sticky="we")
 
     # Configure grid weights to make the widgets scale with the window
     window.grid_rowconfigure(2, weight=1)
