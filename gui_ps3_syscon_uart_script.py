@@ -7,6 +7,7 @@ import signal
 import argparse
 import time
 import serial.tools.list_ports
+import subprocess
 import webbrowser
 import tkinter as tk
 from tkinter import messagebox
@@ -169,12 +170,6 @@ class PS3UART(object):
             else:
                 return 'scopen response invalid'
 
-    def read_syscon_serial_output(self):
-        self.send('serialout\r\n')
-        time.sleep(0.1)
-        output = self.receive().decode('ascii', 'ignore').strip()
-        return output
-
 def main():
     def handle_command():
         port = port_combobox.get()  # Retrieve the selected port from the combobox
@@ -276,38 +271,22 @@ def main():
         port_combobox['values'] = ports
 
     def handle_syscon_serial_output():
-        port = port_combobox.get()  # Retrieve the selected port from the combobox
+        serial_port = port_combobox.get()  # Retrieve the selected port from the combobox
         sc_type = sc_type_combobox.get()
-        if not port or not sc_type:
+        if not serial_port or not sc_type:
             messagebox.showerror("Error", "Please enter the serial port and SC type.")
             return
 
         if sc_type == "CXR":
-            serial_speed = "57600"
+            baud_rate = "57600"
         else:
-            serial_speed = "115200"
+            baud_rate = "115200"
 
-        ps3 = PS3UART(port, sc_type, serial_speed)
+        # Path to gui_diag_serial.py
+        script_path = "gui_diag_serial.py"
 
-        # Create a new window for displaying the output
-        output_window = tk.Toplevel()
-        output_window.title("Syscon Serial Output")
-
-        # Create a text widget to display the output
-        output_text = tk.Text(output_window, height=20, width=100)
-        output_text.pack(fill=tk.BOTH, expand=True)
-
-        # Function to update the output text widget with the latest serial output
-        def update_output():
-            output = ps3.read_syscon_serial_output()
-            output_text.insert(tk.END, output + '\n')
-            output_text.see(tk.END)  # Scroll to the bottom to show the latest output
-
-            # Schedule the next update after a delay (in milliseconds)
-            output_text.after(100, update_output)
-
-        # Start updating the output text widget
-        update_output()
+        # Run the gui_diag_serial.py script using subprocess
+        subprocess.run(["python3", script_path, serial_port, baud_rate])
 
     # Create the main window
     window = tk.Tk()
