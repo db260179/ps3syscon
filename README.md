@@ -63,8 +63,6 @@ Linux 64bit - [Linux64_gui_ps3_syscon_uart_script](/Linux/Linux64_gui_ps3_syscon
 
 Windows 64bit - [Windows64_gui_ps3_syscon_uart_script.exe](/Windows/Windows64_gui_ps3_syscon_uart_script.exe)
 
-NOTE: Copy the python-gui/gui_diag_serial.py to the same folder as the exe #FIXME!
-
 ## Virtualbox environment
 
 Pre setup Debian VM - [VirtualboxVM details](/VirtualboxVM/README.md) - Guide, Download links (md5sum)

@@ -291,8 +291,11 @@ def main():
         else:
             baud_rate = "115200"
 
-        # Path to gui_diag_serial.py
-        script_path = "gui_diag_serial.py"
+        # Path to the current directory - Fixes pyinstall finding scripts
+        base_dir = getattr(sys, "_MEIPASS", os.path.abspath(os.path.dirname(__file__)))
+
+        # Path to gui_diag_serial.py (assuming it's in the same folder as the main script)
+        script_path = os.path.join(base_dir, "gui_diag_serial.py")
 
         # Determine the platform (Windows or Linux) and set the appropriate command
         if sys.platform.startswith('win'):
