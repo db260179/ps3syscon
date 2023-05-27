@@ -34,16 +34,6 @@ class PS3UART(object):
         self.auth1r_header = uhx('10100000FFFFFFFF0000000000000000')
         self.auth2_header  = uhx('10010000000000000000000000000000')
 
-        def aes_decrypt_cbc(self, key, iv, data):
-            cipher = AES.new(key, AES.MODE_CBC, iv)
-            decrypted_data = cipher.decrypt(data)
-            return decrypted_data
-
-        def aes_encrypt_cbc(self, key, iv, data):
-            cipher = AES.new(key, AES.MODE_CBC, iv)
-            encrypted_data = cipher.encrypt(data)
-            return encrypted_data
-
         self.ser.port = port
         if serial_speed == '57600':
             self.ser.baudrate = 57600
@@ -56,6 +46,16 @@ class PS3UART(object):
         self.ser.open()
         assert self.ser.isOpen()
         self.ser.flush()
+
+    def aes_decrypt_cbc(self, key, iv, data):
+            cipher = AES.new(key, AES.MODE_CBC, iv)
+            decrypted_data = cipher.decrypt(data)
+            return decrypted_data
+
+    def aes_encrypt_cbc(self, key, iv, data):
+            cipher = AES.new(key, AES.MODE_CBC, iv)
+            encrypted_data = cipher.encrypt(data)
+            return encrypted_data
 
     def __del__(self):
         self.ser.close()
