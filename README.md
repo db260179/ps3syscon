@@ -10,6 +10,7 @@ Required Python 2 or Python 3 - [Linux/ps3_syscon_uart_script.py](/Linux/ps3_sys
     - Tested on Windows PowerShell 5.1 and PowerShell Core 7.2
     - Same syntax as the Python script
     - **Sherwood syscons not guaranteed to be working**
+  - Standalone python script requires 'pyserial' and 'pycryptodome' modules to work (Windows 7+)
 
 ## Any OS (python3-tk)
 
